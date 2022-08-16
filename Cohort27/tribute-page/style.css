@@ -1,0 +1,48 @@
+.header{
+    border: 2px solid greenyellow;
+    display:flex;
+    justify-content: center;
+}
+
+.profilepic{
+    border: 2px solid red;
+    display:flex;  
+    justify-content: center;
+}
+
+.description{
+    border: 2px solid blue;
+    display:flex;  
+    justify-content: center;
+    
+}
+
+.info{
+    border: 2px solid yellow;
+    display: flex;
+    
+}
+
+.info h3 p{
+    flex:auto;
+    text-align: center;
+    
+}
+
+.info .section{
+    border: 2px solid purple;
+    display:flex;
+    flex-direction: column;
+    flex:auto;
+    text-align: center;
+    align-items: center;
+    padding: 1%;
+    
+}
+
+.info img{
+    border: 2px solid hotpink;
+    width:200px;
+    height:auto;
+    
+}
