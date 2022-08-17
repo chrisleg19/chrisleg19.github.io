@@ -10,6 +10,11 @@
     justify-content: center;
 }
 
+.profilepic img{
+    width:200px;
+    height:auto;
+}
+
 .description{
     border: 2px solid blue;
     display:flex;  
@@ -45,4 +50,7 @@
     width:200px;
     height:auto;
     
+
 }
+
+
