@@ -1,0 +1,23 @@
+
+
+div{
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+
+.first{
+    display: inline;
+    background-color: yellow;
+}
+
+.second{
+    display: inline;
+    background-color: green;
+}
+
+.third{
+    display: inline;
+    color: white;
+    background-color: blue;
+}
