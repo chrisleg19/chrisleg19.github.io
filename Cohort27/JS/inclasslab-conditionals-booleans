@@ -1,0 +1,85 @@
+//Conditionals Exercise 1 (https://perscholas.instructure.com/courses/1123/assignments/216805)
+
+const num = -10
+
+results = num >= 0 ? `${num} is positive` : `${num} is negative`
+console.log(results);
+
+// Conditionals Exercise 2
+
+userAge = 17
+
+access = userAge >=18 ? "Welcome User 18+" : "You are not old enough for access"
+console.log(access);
+
+// Conditionals Exercise 3
+
+const number = 100
+if (number >= 0 && number > 100){
+    console.log("Number is positive & greater than 100");
+} 
+else if  (number >= 0 && number < 100){
+    console.log("Number is positive BUT less than 100");
+} 
+else if (number === 100){
+    console.log("Number is positive & equal to 100");
+}
+else{
+    console.log("Number is negative.");
+}
+
+
+// Conditionals Challenge
+
+// Change the number of numToCheck to test your code
+let numToCheck = 10;
+
+// Write your code below
+
+if (numToCheck === 0){
+    console.log("Your number is 0 ");
+}
+else if (numToCheck >= 0){
+    console.log("Your number is Positive");
+} else{
+    console.log("Your number is Negative");
+}
+ 
+// Boolean Challenge (https://perscholas.instructure.com/courses/1123/assignments/216807)
+
+// 1.
+const small = 2;
+const large = 5342;
+// ADD CODE BELOW (isSmaller)
+const isSmaller = small < large 
+console.log(isSmaller);
+
+// 2.
+const num1 = 45;
+const string = "45";
+// ADD CODE BELOW (isLooselyEqual and isStrictlyEqual)
+const isLooselyEqual = num1 == string
+const isStrictlyEqual = num1 === string
+console.log(isLooselyEqual, isStrictlyEqual);
+
+ 
+
+// 3.
+const isTrue = true;
+const isFalse = false;
+// ADD CODE BELOW (isTrueNotFalse)
+
+isTrueNotFalse = isTrue !== isFalse
+console.log(isTrueNotFalse);
+
+
+// Uncomment these to check your work! 
+// console.log('Is 2 < 5342?');
+// console.log(isSmaller);
+// console.log('Is 45 loosely equal to "45"?'); 
+// console.log(isLooselyEqual);
+// console.log('Is 45 strictly equal to "45"?');
+// console.log(isStrictlyEqual);
+// console.log('Is true not equal to false?');
+// console.log(isTrueNotFalse);
+

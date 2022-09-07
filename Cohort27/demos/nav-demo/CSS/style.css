@@ -1,0 +1,54 @@
+header {
+  /* background-color: coral; */
+  position:sticky;
+  top:0;
+  text-align: center;
+}
+
+nav {
+  /* position: fixed; */
+
+  /* background-color: aqua; */
+
+  /* removing the width of the nav allows you to text-align:center the Dropdown Menu */
+  /* width: 150px; */
+  
+  
+}
+/* changes "Dropdown Menu" when you hover over the nav */
+nav > h3:hover {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  background-color: white;
+}
+
+/* to hide ul when the page opens up */
+
+ul {
+  /* position: absolute; */
+  top: 8px;
+  /* background-color: red; */
+  padding: 0;
+  display: none;
+  list-style: none;
+}
+
+ul a {
+  text-decoration: none;
+}
+
+/* to display ul when we hover over the navbar */
+
+/* this code says: when we hover over the navbar, show the ul */
+nav:hover ul {
+  display: block;
+  background-color: white;
+}
+
+/* moves the paragraph down below the Dropdown Menu */
+p {
+  top: 100px;
+  /* position: absolute;
+  used z-index:-1; because the <p> was behind the navbar when scrolling down. */
+  z-index: -1;
+}
