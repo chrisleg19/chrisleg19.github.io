@@ -157,7 +157,7 @@ class CheckingAccount extends BankAccount {
     this.overdraftEnabled = true
     console.log(`Thank you for being a ${this.status} member.  Overdraft is now enabled.`)
   }
-
+}
   // overrideWithdraw() {
   //   if (this.status === "gold") {
   //     this.overdraftEnabled = true;
@@ -170,7 +170,7 @@ class CheckingAccount extends BankAccount {
   //     );
   //   }
   // }
-}
+
 
 class SavingsAccount extends BankAccount {
   constructor(ownerName, balance, acctNum, status){
