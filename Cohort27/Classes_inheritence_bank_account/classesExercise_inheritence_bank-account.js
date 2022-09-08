@@ -1,11 +1,10 @@
-
 //====Static Methods=========
 
 // class Governor{
-    
+
 //          name = "George";
 //          state = "Georgia";
-//          popular = true  
+//          popular = true
 //          communityService(service){
 //             return `Off to serve my community and ${service}`
 //         }
@@ -32,7 +31,7 @@
 //     eating(food){
 //         console.log(`This ${food} tastes really good!`);
 //     }
-    
+
 //     sleeping(time){
 //         console.log(`Its ${time}! no wonder i'm tired, it's past my bedtime.`);
 //     }
@@ -113,68 +112,131 @@
 // console.log(original);
 // console.log(chef2);
 
-
 //===========Bank Accounts============
-let balance = 100
-class BankAccount{
-    constructor(ownerName, balance, acctNum){
-        this.ownerName = ownerName
-        this.balance = balance
-        this.acctNum = acctNum
-    }
+let balance;
 
-    deposit(dollarAmount){
-        balance += dollarAmount
-        console.log(`Thank you for the deposit, you balance is $${balance}.`)
-    }
+class BankAccount {
+  constructor(ownerName, balance, acctNum) {
+    this.ownerName = ownerName;
+    this.balance = balance;
+    this.acctNum = acctNum;
+  }
 
-    withdraw(dollarAmount){
-        if(dollarAmount <= balance && this.status !== "black"){
-        console.log(`Please take your cash of $${dollarAmount}.`);
-        let amount = balance -= dollarAmount
-        console.log(`Your remaining balance is $${amount}.`);
-        } else {
-            this.status = "black"
-            console.log(`Sorry, insufficient funds.  Your balance is $${balance}`);
-        }        
-    }
-}
+  deposit(dollarAmount) {
+    this.balance += dollarAmount;
+    console.log(`Thank you for the deposit, you balance is $${this.balance}.`);
+  }
 
-class CheckingAccount extends BankAccount{
-    constructor(ownerName, balance, acctNum, status){
-        super(ownerName, balance, acctNum)
-        this.overdraftEnabled = false
-        this.status = status || "bronze"
+  withdraw(dollarAmount) {
+    if (dollarAmount <= this.balance && this.status !== "black" || this.status ==="gold") {
+      console.log(`Please take your $${dollarAmount}.`);
+      this.balance -= dollarAmount;
+      console.log(`Your balance is $${this.balance}.`);
+    } else {
+      this.status = "black";
+      console.log(
+        `Sorry, you cannot withdraw $${dollarAmount}.  Your balance is $${this.balance}. Your status is black and withdrawals are unavailable.  Please contact customer support @ (1-800-UR-BROKE).`
+      );
     }
-    
-    overrideWithdraw(){
-        if (this.status === "gold"){
-            this.overdraftEnabled = true;
-            console.log(`Thank you ${this.status} member.  Your overdraft is enabled.`);
-        } else{
-            console.log(`Thank you for your business.  Overdraft is exclusive to gold members only.`);
-        }
-    }
+  }
+  set updateStatus(status){
+    this.status = status.toLowerCase()
+  }
 
 }
 
-class SavingsAccount extends BankAccount{
-    
-    overrideWithdraw(){
-        this.status = "black"
-        }
-    }
-    
-    
-const bankAct1 = new BankAccount ("Chris", 500, 12345, )
-const checking = new CheckingAccount("Chris", 500, 12345, )
-const savings = new SavingsAccount("Chris", 500, 12345, )
+class CheckingAccount extends BankAccount {
+  constructor(ownerName, balance, acctNum, status) {
+    super(ownerName, balance, acctNum);
+    this.overdraftEnabled = false;
+    this.status = status.toLowerCase() || "bronze";
+  }
+
+  overrideWithdraw(){
+    this.status = "gold"
+    this.overdraftEnabled = true
+    console.log(`Thank you for being a ${this.status} member.  Overdraft is now enabled.`)
+  }
+
+  // overrideWithdraw() {
+  //   if (this.status === "gold") {
+  //     this.overdraftEnabled = true;
+  //     console.log(
+  //       `Thank you for being a ${this.status} member.  Overdraft is now enabled.`
+  //     );
+  //   } else {
+  //     console.log(
+  //       `Thank you for your business.  Overdraft is exclusive to gold members.`
+  //     );
+  //   }
+  // }
+}
+
+class SavingsAccount extends BankAccount {
+  constructor(ownerName, balance, acctNum, status){
+    super(ownerName, balance, acctNum);
+    this.status = status || checking.status
+  }
 
 
-console.log(bankAct1);
+  overrideWithdrawS() {
+    this.status = "black";
+    console.log(`Your status is ${this.status}, therefore withdrawals are unavailable.  Please contact customer support @ (1-800-UR-BROKE).`);
+  }
+}
+
+const account = new BankAccount("Chris", 500, 12345);
+const checking = new CheckingAccount("Chris", 500, 12345, "BRONZE")
+const savings = new SavingsAccount("Chris", 500, 12345, "Bronze")
+
+//Figure out how to link the dollar amounts from each account.  Dollar amount between 3 accounts do not carry over. 
+
+console.log(checking)
+checking.deposit(100)
 console.log(checking);
-console.log(savings);
+checking.withdraw(200)
+console.log(checking);
+checking.updateStatus = "black"
+console.log(checking);
+checking.withdraw(200)
+savings.overrideWithdrawS()
+console.log(checking);
+checking.overrideWithdraw()
+checking.withdraw(1000)
 
-savings.overrideWithdraw()
-checking.withdraw(50);
 
+// account.deposit(100);
+// console.log(account);
+// console.log(checking);
+// console.log(savings);
+
+
+// console.log(account);
+// console.log(checking);
+// checking.overrideWithdraw();
+// console.log(checking);
+// checking.withdraw(900)
+// console.log(checking);
+// checking.updateStatus = "black"
+// console.log(checking);
+// checking.withdraw(900)
+// console.log(savings);
+// savings.overrideWithdrawS()
+// console.log(savings);
+// savings.withdraw(10);
+
+
+// account.deposit(100);
+// console.log(account);
+// account.withdraw(900)
+// console.log(account);
+// account.updateStatus = "Gold"
+// console.log(account);
+
+// console.log(checking);
+// console.log(savings);
+
+// savings.overrideWithdraw()
+
+// console.log(savings)
+// account.withdraw()
