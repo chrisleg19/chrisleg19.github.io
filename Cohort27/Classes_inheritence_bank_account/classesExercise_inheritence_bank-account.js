@@ -112,6 +112,8 @@
 // console.log(original);
 // console.log(chef2);
 
+
+
 //===========Bank Accounts============
 let balance;
 
@@ -162,18 +164,18 @@ class CheckingAccount extends BankAccount {
     );
   }
 }
-// overrideWithdraw() {
-//   if (this.status === "gold") {
-//     this.overdraftEnabled = true;
-//     console.log(
-//       `Thank you for being a ${this.status} member.  Overdraft is now enabled.`
-//     );
-//   } else {
-//     console.log(
-//       `Thank you for your business.  Overdraft is exclusive to gold members.`
-//     );
-//   }
-// }
+//// overrideWithdraw() {
+////   if (this.status === "gold") {
+////     this.overdraftEnabled = true;
+////     console.log(
+////       `Thank you for being a ${this.status} member.  Overdraft is now enabled.`
+////     );
+////   } else {
+////     console.log(
+////       `Thank you for your business.  Overdraft is exclusive to gold members.`
+////     );
+////   }
+//// }
 
 class SavingsAccount extends BankAccount {
   constructor(ownerName, balance, acctNum, status) {
