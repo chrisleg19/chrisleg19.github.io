@@ -1,0 +1,15 @@
+
+
+Use developer tools in browser.
+Access the console.
+Access different parts of the webpage from the root document. 
+type in the console of the webpage
+
+Example:
+document.body.head.title. => gives you the title of the page
+
+within the developer tool's console, we can use the variable $0 to access/change elements in the brower (preview only)
+
+Ex: dir($0)
+
+note: we selected the element in the developer tool first before modifying style.  
