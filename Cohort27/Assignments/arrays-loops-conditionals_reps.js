@@ -58,7 +58,7 @@
 ////////////////////////////////
 // Methods, Revisited
 ////////////////////////////////
-const favMovies = ['Jaws', 'The Fellowship of the Ring', 'Howl\'s Moving Castle', 'Django Unchained', 'Cloud Atlas', 'The Usual Suspects', 'Toy Story', 'Conan the Barbarian', 'Titanic', 'Harry Potter', 'Fried Green Tomatoes', 'Volver', 'Oculus', 'Seven', 'Black Panther', 'Harry Potter', 'Imitation of Life', 'Snatch', 'Fast and Furious'];
+// const favMovies = ['Jaws', 'The Fellowship of the Ring', 'Howl\'s Moving Castle', 'Django Unchained', 'Cloud Atlas', 'The Usual Suspects', 'Toy Story', 'Conan the Barbarian', 'Titanic', 'Harry Potter', 'Fried Green Tomatoes', 'Volver', 'Oculus', 'Seven', 'Black Panther', 'Harry Potter', 'Imitation of Life', 'Snatch', 'Fast and Furious'];
 
 //1. use the .sort method Thought question: what did this do to the array? Did it permanently alter it?
 // console.log(favMovies);
@@ -102,7 +102,7 @@ const favMovies = ['Jaws', 'The Fellowship of the Ring', 'Howl\'s Moving Castle'
 // console.log(piece);
 
 //11. After running the above tasks, console.log the index of "Fast and Furious" -We removed it from the array, what value do we get when we look for the index of something that is not in the array?
-console.log(favMovies.indexOf("Fast and the Furious"))
+// console.log(favMovies.indexOf("Fast and the Furious"))
 // We get a negative 1 as the index
 
 //12. Thought question: that we declared the variable favMovies with const, and yet, we were allowed to change the array. Weird? Should we have used let?
@@ -110,8 +110,16 @@ console.log(favMovies.indexOf("Fast and the Furious"))
 ////////////////////////////////
 // Where is Waldo
 ////////////////////////////////
+// const whereIsWaldo = [["Timmy", "Frank"], "Eggbert",
+//                     ["Lucinda", "Jacc", "Neff", "Snoop"],
+//                     ["Petunia", ["Baked Goods", "Waldo"]]];
 
-
+// console.log(whereIsWaldo);                    
+// whereIsWaldo.splice(1,1) 
+// console.log(whereIsWaldo);
+// whereIsWaldo[1].splice(2,1, "No One")   
+// console.log(whereIsWaldo); 
+// console.log(whereIsWaldo[2][1][1]);       
 ////////////////////////////////
 //  Excited Kitten
 ////////////////////////////////
