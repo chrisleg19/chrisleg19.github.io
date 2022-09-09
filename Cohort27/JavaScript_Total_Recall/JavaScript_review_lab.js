@@ -512,8 +512,143 @@ You think you could? I think so too. Feel free to skip this problem, because you
 
 //=========A. Make a user object=============
 
+// let user = {
+//     name: "Chris",
+//     email: "chris@chris.com",
+//     age: 34, 
+//     purchased: []
+// }
 
 
-let user = {
+// //=========B. Update the user=============
 
+// user.email = "one@one.com"
+// user.age++
+
+// console.log(user.email);
+// console.log(user.age)
+
+
+// //=========C. Adding keys and values=============
+
+// user.location = "Las Vegas"
+// console.log(user);
+
+
+// //=========D. Shopaholic!=============
+
+// user.purchased.push("carbohydrates")
+// user.purchased.push("peace of mind")
+// user.purchased.push("Merino jodhpurs")
+// console.log(user.purchased);
+
+// console.log(user.purchased[2]);
+
+
+// //=========E. Object-within-object=============
+
+// //1. Write a friend object into your user object and give the friend a name, age, location, and purchased array (empty for now)
+// user.friend = {
+//     name: "John",
+//     age: 44, 
+//     location: "Dallas",
+//     purchased: []
+// }
+
+// //2. Console.log just the friend's name
+// console.log(user.friend.name);
+
+// //3. Console.log just the friend's location
+// console.log(user.friend.location);
+
+// //4. CHANGE the friend's age to 55
+// user.friend.age = 55
+
+// console.log(user.friend.age);
+
+// //5. The friend has purchased "The One Ring". Use .push()to add "The One Ring" to the friend's purchased array.
+
+// user.friend.purchased.push("The One Ring")
+
+// //6. The friend has purchased "A latte". Use .push()to add "A latte" to the friend's purchased array.
+
+// user.friend.purchased.push("A latte")
+
+// console.log(user.friend.purchased)
+
+// //7. Console.log just "A latte" from the friend's purchased array.
+
+// console.log(user.friend.purchased[1])
+
+
+// //=========F. Loops=============
+
+// for (let item of user.purchased){
+//     console.log(`user's items: ${item}`);
+// }
+
+// for (let item of user.friend.purchased){
+//     console.log(`friend's items: ${item}`);
+// }
+
+
+// //=========G. Functions can operate on objects=============
+
+// function updateUser(){
+//     user.age ++
+//     user.name.toUpperCase()
+// }
+
+
+// function oldAndLoud(person){
+//     person.age++
+//     person.name = person.name.toUpperCase() 
+// }
+
+// console.log(user);
+// oldAndLoud(user)
+// console.log(user);
+
+
+//=========Hungry for More===================
+
+//=====Cat Combinator============
+
+//1. Mama cat====================
+
+let cat1 = {
+    name: "Kitty" ,
+    breed: "Tiger",
+    age: 20,
 }
+
+console.log(cat1.age, cat1.breed);
+
+//2. Papa cat====================
+
+let cat2 = {
+    name: "Chester",
+    breed: "Lion",
+    age: 30
+}
+
+//3. Combine Cats!================
+
+function combineCats(mama, papa){
+    console.log(mama)
+    console.log(papa)
+}
+
+combineCats(cat1, cat2)
+
+function combineCats2(obj1, obj2){
+    let child = {}
+    child.name = obj1.name + obj2.name
+    child.age = 1
+    child.breed = `${obj1.breed}-${obj2.breed}`
+    console.log(child)
+}
+
+combineCats2(cat1, cat2)
+
+console.log(combineCats(combineCats(cat1, cat2), combineCats(cat1, cat2)));
