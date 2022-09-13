@@ -2,6 +2,7 @@
         //1. Create a new variable called 'total' and assign it the div with the id of 'total'
 
         let total = document.querySelector("#total")
+        // converting the text content of <div id="total">0</div> to a number
         let totalNum = Number(total.textContent)
         
         //2. Create Six Functions (add, subtract, multiplyBy2, divideby2, multiplyBy5, divideBy5)
