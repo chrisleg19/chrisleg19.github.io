@@ -37,11 +37,14 @@ console.log(atags);   //*Easier way
 // })
 
 // Select all elements that contain a "data-target" attribute
+
 //**Attributes are targeted using square brackets[] */
     //Attributes: define additional characteristics or properties of the element such as width and height of an image (examples: href, data-target)
 const dTarget = document.querySelectorAll("[data-target]")
 console.log(dTarget);
 
+//**NOTE: You can use any CSS selector inside of querySelector() */
+//https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction 
 
 // Select all elements where the data-target attribute equals "#false"
 
