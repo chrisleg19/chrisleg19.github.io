@@ -27,11 +27,25 @@ const randomColor = () => {
     return rgbColor
 }
 
+function randomWidth(){
+    let width = Math.floor(Math.random() *100)
+    width = `${width}px`
+    return width
+}
+
+function randomHeight(){
+    let height = Math.floor(Math.random() *100)
+    height = `${height}px`
+    return height
+}
+
 function boxLoop (num){
 for (let i = 1; i <= num; i++){
     const div = document.createElement("div")
     div.classList.add("square")
     div.style.backgroundColor = randomColor()
+    div.style.width = randomWidth()
+    div.style.height = randomHeight()
     div.textContent = i
     page.appendChild(div)
     // console.log(div);
