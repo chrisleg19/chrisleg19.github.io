@@ -28,7 +28,7 @@ const randomColor = () => {
 }
 
 function boxLoop (num){
-for (let i = 0; i <= num; i++){
+for (let i = 1; i <= num; i++){
     const div = document.createElement("div")
     div.classList.add("square")
     div.style.backgroundColor = randomColor()
