@@ -12,12 +12,12 @@ function rollDice() {                               //function to roll dice and 
 //console.log(`Player Roll is:${playerRoll}`);
   compRoll = Math.floor(Math.random() * 7);         //random num 1-6 for player
 //console.log(`Computer Roll is:${compRoll}`);
-  winner = playerRoll > compRoll ? "Player Wins" : "Computer Wins";  // ternary to determine winner
+  winner = playerRoll > compRoll ? "Player Wins" : compRoll > playerRoll ? "Computer Wins" : "Tie";  // ternary to determine winner
 //console.log(winner);
   arr.push(playerRoll);                             //pushing player's roll to array
   arr.push(compRoll);                               //pushing computer's roll to array
   arr.push(winner);                                 //pushing ternary results to array
-  console.log(arr)
+  // console.log(arr)
   return arr;                                       //return array from function
 }
 

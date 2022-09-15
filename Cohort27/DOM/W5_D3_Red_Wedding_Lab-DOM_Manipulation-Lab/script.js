@@ -5,6 +5,7 @@ let add = document.querySelector("#add-child")
 let redWed = document.querySelector("#red-wedding")
 let arr = []
 
+
 function addChild(){
     let newDiv = document.createElement("div")
     newDiv.textContent ="New Child"
@@ -14,14 +15,25 @@ function addChild(){
 }
 
 function redWedding(){
-    for(let i of arr){
-        if(i = "List"){
-            list.textContent = "List"
-        }else{
-            console.dir(i)
-            list.textContent = ""
+    let arr1 = document.querySelectorAll("div")   //
+    console.log(arr1);
+    for(let div of arr1){
+        console.log(div);
+        if(div.textContent === "New Child"){
+            div.remove()
         }
     }
+console.log(document.querySelectorAll("div"))
+
+    // for(let div of arr){
+    //     if(div.textContent === "List"){
+    //         list.textContent = "hello"
+    //     }else{
+    //         console.dir(i)
+    //         console.log("somethingelse")
+    //         list.textContent = ""
+    //     }
+    // }
 }
 
 add.addEventListener("click", addChild)
