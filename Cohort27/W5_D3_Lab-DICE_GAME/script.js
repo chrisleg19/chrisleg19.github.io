@@ -17,6 +17,7 @@ function rollDice() {                               //function to roll dice and 
   arr.push(playerRoll);                             //pushing player's roll to array
   arr.push(compRoll);                               //pushing computer's roll to array
   arr.push(winner);                                 //pushing ternary results to array
+  console.log(arr)
   return arr;                                       //return array from function
 }
 
@@ -29,6 +30,7 @@ function displayScore() {                           //function to display result
 }
 
 function resetGame() {                              //function to clear scoreboard
+  arr.splice(0,arr.length)                          //resetting the game results         
   document.querySelector(".created-div").remove();  //removing the created div (scoreboard)
 }
 
