@@ -1,0 +1,142 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.clearAll{
+    margin-top: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    background-color: rgb(129, 194, 194);
+    padding: 1rem;
+    border-radius: 10px;
+    cursor:pointer
+}
+
+.clearAll:hover{
+    font-weight: bolder;
+    box-shadow: 2px 2px 2px;
+}
+
+.info{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 2rem;
+    width: 400px;
+    border: solid;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.scoreboard{
+    margin-bottom: 1rem;    
+}
+
+
+
+
+.container{
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr ; */
+    grid-template-areas: 
+    "child1 child2 child3"
+    "clear1 clear2 clear3"
+    "child4 child5 child6"
+    "clear4 clear5 clear6"
+    "child7 child8 child9"
+    "clear7 clear8 clear9";
+    height: 500px;
+    width: 500px;
+    justify-items: center;
+    align-items: center;
+    
+}
+
+.child{
+    border: solid;
+    width: 150px;
+    height: 150px;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 150px;
+}
+
+.clearBtn{
+    /* background:none;
+    border:none; */
+    background-color: rgb(129, 194, 194);
+    width: 100px;
+    padding: 5px;
+    margin:5px;
+    text-align: center;   
+    cursor:pointer
+}
+
+.clearBtn:hover{
+    
+    font-weight: bolder;
+    box-shadow: 1px 1px 1px;
+}
+
+.child1{
+    grid-area: child1;
+}
+.clear1{
+    grid-area:clear1
+}
+.child2{
+    grid-area: child2;
+}
+.clear2{
+    grid-area:clear2
+}
+.child3{
+    grid-area: child3;
+}
+.clear3{
+    grid-area:clear3
+}
+.child4{
+    grid-area: child4;
+}
+.clear4{
+    grid-area:clear4
+}
+.child5{
+    grid-area: child5;
+}
+.clear5{
+    grid-area:clear5
+}
+.child6{
+    grid-area: child6;
+}
+.clear7{
+    grid-area:clear7
+}
+.child7{
+    grid-area: child7;
+}
+.child8{
+    grid-area: child8;
+}
+.clear8{
+    grid-area:clear8
+}
+.child9{
+    grid-area: child9;
+}
+.clear9{
+    grid-area:clear9
+}
