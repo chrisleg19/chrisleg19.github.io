@@ -41,12 +41,12 @@
 
 // Exercise # 1.5***************************************************
 
-// let hash = ""
-// let sign = "#######"
-// for (let i = 0; i < 7; i++){
-//     hash += sign[i]
-//     console.log(hash);
-// }
+let hash = ""
+let sign = "#######"
+for (let i = 0; i < 7; i++){
+    hash += sign[i]
+    console.log(hash);
+}
 
 // Exercise #2.1**********************************************
 
