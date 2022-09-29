@@ -20,7 +20,7 @@ const plants = ['Monstera Deliciosa', 'Corpse Flower', 'Elephant-Foot Yam', "Wit
 //     response.send("<h1>Welcome to Express Plants</h1>")
 // })
 
-//*========CREATING PARAMETER IN URL (after the :)====================
+//*========CREATING PARAMETER IN URL (anything after the :)====================
 //*Think of parameters as blank spaces within the url that accept some type of input
 // you can only have 1 response (.send) for each request unless they are nested in IFstatement or other program logic
 
