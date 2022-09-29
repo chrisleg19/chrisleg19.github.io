@@ -108,22 +108,22 @@ const plants = ['Monstera Deliciosa', 'Corpse Flower', 'Elephant-Foot Yam', "Wit
 
 //======*Another example using req.query=====
 
-const dbUser = ["Colton", "Abe", "Deja", "Chris"]
+// const dbUser = ["Colton", "Abe", "Deja", "Chris"]
 
-app.get("/search/:username", (req,res)=>{
-    const {username} =req.params
-    console.log(req.params)
-    console.log(req.query)
+// app.get("/search/:username", (req,res)=>{
+//     const {username} =req.params
+//     console.log(req.params)
+//     console.log(req.query)
 
-    for (let user of dbUser){
-        if(user === username){
-            return res.send(`Welcome ${username}`)
-        } else {
-            console.log("User Not Found!") 
-        }
-    }
-    res.send("User Not Found!")
-})
+//     for (let user of dbUser){
+//         if(user === username){
+//             return res.send(`Welcome ${username}`)
+//         } else {
+//             console.log("User Not Found!") 
+//         }
+//     }
+//     res.send("User Not Found!")
+// })
 
 // URL using the for loop above: http://localhost:3000/search/Chris
 
