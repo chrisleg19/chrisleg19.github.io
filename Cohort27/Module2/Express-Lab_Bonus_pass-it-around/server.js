@@ -12,7 +12,6 @@ app.get("/get", (req, res)=>{
     res.send(`${startingBottleCount} bottles of beer on the wall <br> <a href="/get/${oneLess}">Take one down, pass it around</a>`)
 })
 
-
 app.get("/get/:number_of_bottles", (req,res)=>{
     const {number_of_bottles} = req.params
     let takeOne = number_of_bottles - 1
