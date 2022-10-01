@@ -1,0 +1,1207 @@
+// try {
+
+// Gets the course number from the page header
+let courseNumber = getCourseNumber();
+
+//*********************************************| IT Support Menu |*****************************************************************************
+// Edit this to add or remove from the global navigation for the IT Supoort Modules
+
+// Edit this to add or remove from the global navigation for the  Modules
+const itSupportMenu = {
+    name: "IT Support",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Professional Development',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 3
+        },
+        {
+            name: 'Learner Support',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/learner-support-home`,
+            position: 4
+        },
+        {
+            name: 'Business Solutions',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/business-solutions-home`,
+            position: 5
+        },
+        {
+            name: 'IT Support',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/it-support-home`,
+            position: 6
+        },
+
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+//*********************************************| Cyber Security Menu |*****************************************************************************
+
+// Edit this to add or remove from the global navigation for the Cyber Security Modules
+const CyberSecurityMenu = {
+    name: "Cyber Security",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Professional Development',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 3
+        },
+        {
+            name: 'Learner Support',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/learner-support-home`,
+            position: 4
+        },
+        {
+            name: 'Business Solutions',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/business-solutions-home`,
+            position: 5
+        },
+        {
+            name: 'Cyber Security',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/cyber-security-home`,
+            position: 6
+        }
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+
+    ]
+}
+
+//*********************************************| Alumni Network+ Security Menu |***********************************************************************
+
+// Edit this to add or remove from the global navigation for the Alumni NET+ Course Modules
+const AlumniNetMenu = {
+    name: "Alumni NET+",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Network+',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Network-Plus-home`,
+            position: 2
+        },
+        {
+            name: 'Certification PREP',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Certificate-Prep-home/`,
+            position: 3
+        }
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+//*********************************************| IT Bridge Menu |***********************************************************************
+// Edit this to add or remove from the global navigation for the IT Bridge Course Modules
+const ITBridgeMenu = {
+    name: "Tech Bridge",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 3
+        },
+        {
+            name: 'Tech Bridge',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Tech-Bridge`,
+            position: 3
+        },
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+//*********************************************| Alumni Security+ Menu |***********************************************************************
+
+// Edit this to add or remove from the global navigation for the Alumni Security+ Course Modules
+const AlumniSecurityMenu = {
+        name: "Alumni Security+",
+        mainMenu: [{
+                name: 'Home',
+                url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+                position: 1
+            },
+            {
+                name: 'Security+',
+                url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Security-Plus-home`,
+                position: 2
+            },
+            {
+                name: 'Certification PREP',
+                url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Certificate-Prep-home/`,
+                position: 3
+            }
+
+        ],
+        otherDropdownButton: [{
+                name: 'Submit Ticket',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            },
+            {
+                name: 'Contacts',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            },
+            {
+                name: 'Course Resources',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+            },
+            {
+                name: 'Course-Toolkit',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+            },
+        ]
+    }
+    //*********************************************| Cyber Bridge Menu |***********************************************************************
+
+// Edit this to add or remove from the global navigation for the Cyber Bridge Modules
+const CyberBridgeMenu = {
+    name: "Cyber Bridge",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'CyberBridge PS',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/cyber-bridge-ps-home`,
+            position: 4
+        },
+
+
+        {
+            name: 'CyberBridge GW',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/cyber-bridge-home`,
+            position: 4
+        }
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+
+    ]
+}
+
+//*********************************************| AWS Menu |***********************************************************************
+
+// Edit this to add or remove from the global navigation for the AWS Modules
+
+const AWSMenu = {
+    name: "AWS",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+
+        {
+            name: 'Professional Development',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 3
+        },
+
+        {
+            name: 'AWS PLATFORM',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/AWS-home`,
+            position: 4
+        },
+
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+
+
+// Onboarding second Menu
+
+
+const OnboardingMenu = {
+    name: "Onboarding 2",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Welcome',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-1-welcome-to-per-scholas/`,
+            position: 3
+        },
+
+        {
+            name: 'Succeeding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/2-dot-1-planning-your-learning-experience/`,
+            position: 4
+        },
+        {
+            name: 'Digital Citizenship',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/3-dot-1-netiquette-for-the-net`,
+            position: 5
+        },
+        {
+            name: 'CANVAS Training',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/4-dot-0-1-canvas-home-page`,
+            position: 6
+        },
+        {
+            name: 'Resources & Acknowledgement',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/5-dot-0-course-resources-and-acknowledgement-home-page`,
+            position: 7
+        },
+
+    ]
+}
+
+
+//*********************************************| IT101  Menu |*****************************************************************************
+
+// Edit this to add or remove from the global navigation for the IT101 Modules
+const IT101 = {
+    name: "IT101",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Windows Server',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/windows-server-home`,
+            position: 3
+        },
+        {
+            name: 'OPNsense',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/learner-support-home`,
+            position: 4
+        },
+        {
+            name: 'CISCO Meraki',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/business-solutions-home`,
+            position: 5
+        },
+        {
+            name: 'WIRESHARK',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/cyber-security-home`,
+            position: 6
+        },
+        {
+            name: 'CYSA+ LABs',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/cyber-security-home`,
+            position: 7
+        },
+        {
+            name: 'A+ LABs',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/cyber-security-home`,
+            position: 7
+        }
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+//*********************************************| Canvas NON-instructor Menu |*****************************************************************************
+
+// Edit this to add or remove from the global navigation for the Canvas NON-instructor Modules
+const Canvas_NON = {
+    name: "Canvas",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Canvas Training',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Canvas-Non-Instructors/`,
+            position: 2
+        },
+        {
+            name: 'Studio',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Studio`,
+            position: 3
+        },
+        {
+            name: 'Resources',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Resources`,
+            position: 4
+        },
+        {
+            name: 'Free Tools',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Free-Tools`,
+            position: 5
+        },
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+
+
+    ]
+}
+
+
+//*********************************************| cyber security year up Menu |*****************************************************************************
+
+// Edit this to add or remove from the global navigation for the cyber security year up Modules
+const Cyber_YearUP_Menu = {
+    name: "Cyber Security YearUP",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Cyber Security',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Cyber-Security`,
+            position: 3
+        },
+        {
+            name: 'Certificate Training',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Certificate-Training`,
+            position: 4
+        },
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+
+    ]
+}
+
+
+//*********************************************| Net+008 Menu |*****************************************************************************
+
+// Edit this to add or remove from the global navigation for the Network+ 008 year up Modules
+const Net_008_Menu = {
+        name: "Network_008",
+        mainMenu: [{
+                name: 'Home',
+                url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+                position: 1
+            },
+            {
+                name: 'Onboarding',
+                url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+                position: 2
+            },
+            {
+                name: 'Networking Training',
+                url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Network-Training`,
+                position: 3
+            },
+            {
+                name: 'Certificate Training',
+                url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Certificate-Training`,
+                position: 4
+            },
+
+
+
+        ],
+        otherDropdownButton: [{
+                name: 'Submit Ticket',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            },
+            {
+                name: 'Contacts',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            },
+            {
+                name: 'Course Resources',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+            },
+            {
+                name: 'Course-Toolkit',
+                link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+                endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+            },
+
+        ]
+    }
+    //*********************************************| Security+ 601 Menu |*****************************************************************************
+
+// Edit this to add or remove from the global navigation for the Network+ 008 year up Modules
+const Security_601_Menu = {
+    name: "Security_601",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Security Training',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Security-Training`,
+            position: 3
+        },
+        {
+            name: 'Certificate Training',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Certificate-Training`,
+            position: 4
+        },
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+
+    ]
+}
+
+
+//*********************************************| EUDS Menu |*****************************************************************************
+// Edit this to add or remove from the global navigation for the IT Supoort Modules
+
+// Edit this to add or remove from the global navigation for the  Modules
+const EUDSMenu = {
+    name: "EUDS",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Professional Development',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 3
+        },
+        {
+            name: 'Learner Support',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/learner-support-home`,
+            position: 4
+        },
+        {
+            name: 'Business Solutions',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/business-solutions-home`,
+            position: 5
+        },
+        {
+            name: 'EUDS',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/euds-home`,
+            position: 6
+        },
+
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+
+//*********************************************| Data Center Menu |*****************************************************************************
+// Edit this to add or remove from the global navigation for the IT Supoort Modules
+
+// Edit this to add or remove from the global navigation for the  Modules
+const Data_Menu = {
+    name: "Data Center",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Professional Development',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 3
+        },
+
+        {
+            name: 'Data Center',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/data-center-home`,
+            position: 4
+        },
+
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+
+//*********************************************| AMEX Java Menu |*****************************************************************************
+// Edit this to add or remove from the global navigation for the IT Supoort Modules
+
+// Edit this to add or remove from the global navigation for the  Modules
+const AMEXJava_Menu = {
+    name: "AMEX Java",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Professional Development',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 3
+        },
+        {
+            name: 'FS Java',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/java-home`,
+            position: 4
+        },
+
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+//*********************************************| TEK Global Java Menu |*****************************************************************************
+// Edit this to add or remove from the global navigation for the IT Supoort Modules
+
+// Edit this to add or remove from the global navigation for the  Modules
+const TEK_Java_Menu = {
+    name: "TEK Java",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'Professional Development',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 3
+        },
+        {
+            name: 'TEK Java',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/java-home`,
+            position: 4
+        },
+
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+    ]
+}
+
+
+//*********************************************| TWOC Menu |*****************************************************************************
+
+// Edit this to add or remove from the global navigation for the cyber security year up Modules
+const TWOC_Menu = {
+    name: "TWOC",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 2
+        },
+        {
+            name: 'IT Support',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/IT-Support`,
+            position: 3
+        },
+        {
+            name: 'Certificate Training',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/Certificate-Training`,
+            position: 4
+        },
+
+
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/how-to-submit-a-ticket`,
+        },
+        {
+            name: 'Contacts',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/1-dot-2-meet-your-perscholas-team`,
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+        },
+
+    ]
+}
+
+
+
+
+// To create a new menu, make a copy of OtherMenu here, paste it above and change its name
+const OtherMenu = {
+    name: "Other Menu Name",
+    mainMenu: [{
+            name: 'Home',
+            url: 'https://perscholas.instructure.com/courses/' + courseNumber,
+            position: 1
+        },
+        {
+            name: 'Prework',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/pre-work-home`,
+            position: 2
+        },
+        {
+            name: 'Onboarding',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/student-onboarding-home/`,
+            position: 3
+        },
+        {
+            name: 'Career Dev',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/professional-development`,
+            position: 4
+        },
+        {
+            name: 'Learner Support',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/learner-support-home`,
+            position: 5
+        },
+        {
+            name: 'Business Solutions',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/business-solutions-home`,
+            position: 6
+        },
+        {
+            name: 'Web dev',
+            url: `https://perscholas.instructure.com/courses/${courseNumber}/pages/cyber-security-home`,
+            position: 7
+        }
+
+    ],
+    otherDropdownButton: [{
+            name: 'Submit Ticket',
+            link: `https://docs.google.com/forms/d/e/1FAIpQLSdUsFJR7HS0n52QEmKD-ZMloCsDebD7TQv7l1ZjcQhE4ZP_sA/viewform`,
+            endpoint: `https://docs.google.com/forms/d/e/1FAIpQLSdUsFJR7HS0n52QEmKD-ZMloCsDebD7TQv7l1ZjcQhE4ZP_sA/viewform`
+        },
+        {
+            name: 'Course Resources',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-resources`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-resources`,
+        },
+        {
+            name: 'Course-Toolkit',
+            link: `https://perscholas.instructure.com/courses/${courseNumber}/pages/course-toolkit`,
+            endpoint: `https://perscholas.instructure.com/api/v1/courses/${courseNumber}/pages/course-toolkit`,
+
+        }
+    ]
+}
+
+
+// Place the names of the menus here
+let activeMenus = [itSupportMenu, Security_601_Menu, CyberSecurityMenu, AlumniNetMenu, ITBridgeMenu, AlumniSecurityMenu, CyberBridgeMenu, AWSMenu, OnboardingMenu, IT101, Canvas_NON, Cyber_YearUP_Menu, Net_008_Menu, TWOC_Menu, EUDSMenu, AMEXJava_Menu, Data_Menu, TEK_Java_Menu];
+
+
+
+
+
+// This function tracks the url and extracts the course number if available and returns it or null
+function getCourseNumber() {
+    'use strict';
+    var matches, killspot;
+    // Parse Course Number - It is stored in the variable "coursenum"
+    var coursenum = null;
+    matches = location.pathname.match(/\/courses\/(.*)/);
+    if (matches) {
+        coursenum = matches[1];
+        killspot = coursenum.indexOf("/", 0);
+        if (killspot >= 0) {
+            coursenum = coursenum.slice(0, killspot);
+        }
+    }
+    return coursenum;
+}
+
+
+// this function extracts the courseType from the "data-course" attribute on each page used with the template page
+function getCourseType() {
+    try {
+        return
+    } catch {
+
+    }
+}
+
+
+
+function createMenu() {
+
+    setTimeout(function() {
+
+
+        // Gets the course type from the data-course attribute on html page
+        let courseType = document.querySelector("#page-info").dataset.course
+
+        // Gets the page type from the data-page attribute on html page
+        let pageType = document.querySelector("#page-info").dataset.page
+
+
+
+        const currentMenu = activeMenus.find(e => e.name === courseType)
+        console.log(currentMenu)
+
+        var ul = document.createElement('ul');
+
+        try {
+
+            currentMenu.mainMenu.forEach(e => {
+                const li = document.createElement('li')
+                const text = document.createElement('a')
+                text.innerHTML = e.name
+                text.setAttribute("href", e.url);
+
+                switch (e.name) {
+                    case pageType:
+                        text.setAttribute("class", "Button Button--info Button--active");
+                        break;
+                    case 'Tickets':
+                        text.setAttribute("class", "Button Button--info Button--warning");
+                        break;
+
+                    default:
+                        text.setAttribute("class", "Button Button--info");
+                        break;
+                }
+
+
+                li.appendChild(text)
+                ul.appendChild(li)
+            })
+
+            document.querySelector("#global-nav").appendChild(ul)
+
+
+
+            const dropdown_container = document.createElement('div')
+            dropdown_container.setAttribute("class", "al-dropdown__container");
+
+            const dropdown_container_text = document.createElement('a')
+            dropdown_container_text.setAttribute("class", "al-trigger Button");
+            dropdown_container_text.setAttribute("role", "button");
+            dropdown_container_text.setAttribute("href", "#");
+            dropdown_container_text.setAttribute("aria-haspopup", "true");
+            dropdown_container_text.setAttribute("tabindex", "0");
+            dropdown_container_text.innerHTML = `Quick Links <i class="icon-mini-arrow-down"></i>`
+
+            dropdown_container.appendChild(dropdown_container_text)
+
+            const dropdown_ul = document.createElement('ul')
+            dropdown_ul.setAttribute("class", "al-options ui-menu ui-widget ui-widget-content ui-corner-all ui-popup ui-kyle-menu use-css-transitions-for-show-hide");
+            dropdown_ul.setAttribute("aria-expanded", "false");
+            dropdown_ul.setAttribute("aria-hidden", "true");
+            dropdown_ul.setAttribute("tabindex", "0");
+            dropdown_ul.setAttribute("role", "menu");
+            dropdown_ul.setAttribute("id", "ui-id-4");
+            dropdown_ul.setAttribute("style", "display: none; top: 39.8px; left: 8.34998px;");
+            dropdown_ul.setAttribute("aria-activedescendant", "ui-id-1");
+
+            currentMenu.otherDropdownButton.forEach((e, i) => {
+                const dropdown_li = document.createElement('li')
+                dropdown_li.setAttribute("class", "ui-menu-item");
+                dropdown_li.setAttribute("role", "presentation");
+
+                const dropdown_li_a = document.createElement('a')
+                dropdown_li_a.innerHTML = e.name
+                dropdown_li_a.setAttribute("title", e.name);
+                dropdown_li_a.setAttribute("href", e.link);
+                dropdown_li_a.setAttribute("data-api-endpoint", e.endpoint);
+                dropdown_li_a.setAttribute("data-api-returntype", "Page");
+                dropdown_li_a.setAttribute("class", "icon-edit ui-corner-all");
+                dropdown_li_a.setAttribute("tabindex", "-1");
+                dropdown_li_a.setAttribute("role", "menuitem");
+                dropdown_li_a.setAttribute("id", "ui-id-" + i++);
+                dropdown_li.appendChild(dropdown_li_a)
+                dropdown_ul.appendChild(dropdown_li)
+            })
+
+
+            dropdown_container.appendChild(dropdown_ul)
+            const li = document.createElement('li')
+            li.appendChild(dropdown_container)
+            ul.appendChild(li)
+
+
+
+
+        } catch (error) {
+            console.error(error)
+        }
+
+    }, 2000);
+
+
+}
+
+createMenu()
+
+
+
+
+// } catch {
+
+// }Pro
