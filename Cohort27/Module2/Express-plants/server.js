@@ -106,7 +106,7 @@ const plants = ['Monstera Deliciosa', 'Corpse Flower', 'Elephant-Foot Yam', "Wit
 //http://localhost:3000/howdy/Chris?title=dev&experience=1
 
 
-//======*Another example using req.query=====
+//======*Another example using req.query=====*EXAMPLE WITH FOR LOOP WITH RETURN================
 
 // const dbUser = ["Colton", "Abe", "Deja", "Chris"]
 
