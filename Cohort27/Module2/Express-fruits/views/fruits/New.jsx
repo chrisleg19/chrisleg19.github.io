@@ -14,6 +14,8 @@ class New extends React.Component {
           <br />
           Is Ready to Eat: <input type="checkbox" name="readyToEat" /> 
           <br />
+          <input type="text" name="image" placeholder="image url"></input>
+          <br/>
           <input type="submit" name="" value="Create New Fruit" />
 
         </form>

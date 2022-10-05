@@ -10,9 +10,24 @@ const morgan = require("morgan")  // Morgan is a middleware that will let us kno
 
 
 //importing the data (fruits array) from the file (./models/fruits)
+//fruits not needed after we connect Fruit model
 const fruits = require("./models/fruits")
+const vegetables = require("./models/vegetables")
 const vegetablesArray = require("./models/vegetables")
 
+//Importing in dotenv
+//must have .env installed before running below
+require("dotenv").config()
+
+//Importing Mongoose (additional code needed (inside app.listen) to connect to Mongo)
+const mongoose = require("mongoose")
+
+//Importing Model
+const Fruit = require("./models/FruitModel")
+
+
+//testing dotenv connection(process.env.MONGO_URI will show all environmental variables)
+console.log(process.env.MONGO_URI);  
 
 //NOTE: npm remove morgan (in terminal) - to remove morgan
 //NOTE: npm i -D morgan (in terminal) - to set morgan under "devDependencies" in package.json vs "dependencies".  This will help with keeping your application smaller because morgan isn't listed under "dependencies" 
@@ -66,10 +81,18 @@ app.get("/", (req, res)=>{
 //Fruits Routes:
 //Index route: get all fruits (array)
 app.get("/fruits", (req, res)=>{
-    //response is JSON data, showing the array "fruits"
-    // res.send(fruits)
-    //rendering a template file:
-    res.render("fruits/Index.jsx", {fruits: fruits})
+    //This method (with {}) finds all documents in database
+    //The first parameter is a filter object (a blank object sends all documents)
+    Fruit.find({},(error,fruitsFromDb)=>{
+        if(error){
+            console.log(error)
+        }
+        console.log(fruitsFromDb)
+        //response is JSON data, showing the array "fruits"
+        // res.send(fruits)
+        //rendering a template file:
+        res.render("fruits/Index.jsx", {fruits: fruitsFromDb})
+    })
 })
 
 
@@ -78,15 +101,38 @@ app.get("/fruits", (req, res)=>{
 
 app.post("/fruits", (req,res)=>{
     //req.body is where your data is going
-    console.log(req.body)
+    // console.log(req.body)
     let {readyToEat} = req.body
-    if(readyToEat === 'on'){ //if checked, readyToEat is set to 'on'
+    if(readyToEat === "on"){ //if checked, readyToEat is set to 'on'
         readyToEat = true; //do some data correction
     } else { //if not checked, readyToEat is undefined
         readyToEat = false; //do some data correction
     }
-    fruits.push(req.body);
-    res.redirect("/fruits")
+    // fruits.push(req.body);  //No longer needed if sending data to database
+    
+    //Using our model to create a new resource in our database
+    Fruit.create(req.body, (error, createdFruit)=>{
+        if(error){
+            console.log(error)
+        }
+        console.log(createdFruit)
+        res.redirect("/fruits")
+    })
+})
+
+
+app.post("/vegetables", (req,res)=>{
+    console.log(req.body)
+    let {readyToEat} = req.body
+    if(readyToEat === "on"){
+        readyToEat = true;
+    } else{
+        readyToEat = false;
+    }
+    console.log(req.body)
+    vegetablesArray.push(req.body);
+    res.redirect("/vegetables")
+
 })
 
 
@@ -97,19 +143,30 @@ app.get("/fruits/new", (req,res)=>{
 })
 
 
+app.get("/vegetables/new", (req, res)=>{
+    res.render("vegetables/New")
+})
+
+
 
 //===================Show Route===============
 //Show route: after passing in the array index (in the URL) as the value of parameter, you get the single fruit at that index
 //getting information from Show.jsx
-app.get("/fruits/:indexOfFruitsArray", (req, res)=>{
-    const {indexOfFruitsArray} = req.params  //destructuring
-    //// res.send(fruits[indexOfFruitsArray])
-    //passing an object with a property fruit to "Show". The value of the property is fruits[indexOfFruitsArray]
-    res.render("fruits/Show.jsx", {                  //second param must be an object
-       fruit: fruits[indexOfFruitsArray],  //there will be a variable available inside the ejs file called fruit, its value is fruits[indexOfFruitsArray]
-       date: new Date().getFullYear(),
+app.get("/fruits/:id", (req, res)=>{
+    const {id} = req.params;  //destructuring
+    //// res.send(fruits[id])
+    //passing an object with a property fruit to "Show". The value of the property is fruits[id]
+    
+    Fruit.findById(id, (error, foundFruit) =>{
+        if(error){
+            console.log(error)
+        }
+        res.render("fruits/Show", {                  //second param must be an object
+           fruit: foundFruit,  //there will be a variable available inside the ejs file called fruit, its value is fruits[id]
+           date: new Date().getFullYear(),
+        })
     })
-})
+});
 
 
 //Vegetables Routes:
@@ -135,135 +192,17 @@ app.get("/vegetables/:indexOfVegetablesArray", (req,res)=>{
 //Port:
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
+    
+    //Additional code needed to connect to Mongo
+    mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true, 
+        useUnifiedTopology: true, 
+    });
+    mongoose.connection.once('open', ()=> {
+        console.log('connected to mongo');
+    });
 })
+    
 
 
 
-//=====NOTE: USE MVC (models, views, and controllers) to better organize your data:
-//One way to keep an app from getting messy is to separate it out into three sections
-
-    // - Models
-    //     - data (javascript variables)
-    // - Views
-    //     - how the data is displayed to the user (HTML)
-    // - Controllers
-    //     - the glue that connects the models with the views with logic
-
-
-//This allows various developers to divide up a large code base:
-    // - minimizes likelihood of developers overwriting each others code
-    // - allows developers to specialize
-    //     - one can focus just on getting good with dealing with data
-    //     - one can focus just on getting good with html
-    //     - one can focus just on getting good with connecting the two
-
-
-//Think of MVC as a restaurant:
-    // - Models are the cook
-    //     - prepares food/data
-    // - Views are the customer
-    //     - consumes food/data
-    // - Controllers are the waiter
-    //     - brings food from cook to customer
-    //     - has no idea how food/data is prepared
-    //     - has no idea how the food/data is consumed
-
-
-
-// What is JSX ?
-    // A Syntax that allows us to write our HTML, CSS and Javascript in the same file so that we can more easily create user interfaces React is one of the most well known users of JSX. But other libraries like Lit-HTML, and KofuJS use it as well.
-
-
-// express-react-views
-    // This is an Express view engine which renders React components on a server. It uses react because it was made by facebook. It renders static markup and does not support mounting those views on the client.
-
-    // This is intended to be used as a replacement for existing server-side view solutions, like jade, ejs (Like we have been using), or handlebars.
-
-
-//JSX USES
-    // You can use JSX as a template language to tell your server how to dynamically change your HTML ( That's what we'll be doing for now)
-
-    // You can also use JSX for very very sophisticated Dom Manipulation, and that's what we'll be doing in in 2 weeks after we have a good handle on servers.
-
-
-//Small intro to React  (Look at Show.JSX for more info)
-
-//A different way of Separating Concerns ( Component Driven Development )
-
-// Lets Think of Games
-    // Job is to fight          (Ex: HTML)
-    // Job is to fish           (Ex: CSS)
-    // Job is to heal people    (Ex: JavaScript)
-
-// We could separate 1 big group of fishers, 1 big group of fighters, 1 big group of healers Each group runs itself and are just dependent upon each other to survive
-
-// OR
-
-// We could make a bunch of smaller self sufficient group with a few fishers, a few fighters, a few healers
-
-// Not saying either is better but each has it's advantages.
-
-//Install express-react-views
-//Install react-dom
-//input in terminal: npm install express-react-views react react-dom
-
-
-//**====================understanding how React is used big picture:========================
-
-/*
-From Norman park to Me (Direct Message) 02:17 PM
-later we will just have a function called "header" for example and you would just put all the html/JavaScript you need for the header in that one function
-
-Me to Norman park (Direct Message) 02:17 PM
-would the function be in the Show.jsx file?
-
-From Norman park to Me (Direct Message) 02:18 PM
-yes but we would call it different
-like header.jsx
-footer.jsx
-aboutme.jsx
-how ever many sections you want in your page
-then those components might have subcomponents
-for like a video player
-
-Me to Norman park (Direct Message) 02:19 PM
-Ok, so we're using react to create all of the "components" of our page...then where would we call the components we create?
-*created
-
-From Norman park to Me (Direct Message) 02:20 PM
-multiple ways to do it but the simplest would be another .js file called layout
-<Container>
-     <Header/>
-     <main>{children}</main> 
-     <Footer/>
-    </Container>
-would look something like that
-but we would have to "import" all the files were using
-
-Me to Norman park (Direct Message) 02:20 PM
-Ok...that makes more sense
-
-From Norman park to Me (Direct Message) 02:20 PM
-at the top of that layout page
-import React from 'react'
-import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
-import { Container } from './LayoutStyles'
-then you just call the components as you need them
-
-Me to Norman park (Direct Message) 02:20 PM
-...starting to make more sense....thanks man!
-From Norman park to Me (Direct Message) 02:21 PM
-👍
-Me to Norman park (Direct Message) 02:21 PM
-my brain works a little backwards...It helps me to understand the big picture first
-
-From Norman park to Me (Direct Message) 02:21 PM
-im sure youre not the only one. Took me awhile to get it too
-
-Me to Norman park (Direct Message) 02:21 PM
-...putting our convo in my notes...lol
-
-
-
-*/
