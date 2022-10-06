@@ -9,9 +9,10 @@ class Index extends React.Component{
         return(
             <body style={{backgroundColor:"#218c74"}}>
             <div style={styles.container} >
+                <div style={styles.top}>
                 <h1 style={styles.header}>All Fruits</h1>
                 <a style={styles.createNewFruit} href="/fruits/new">Create New Fruits</a>
-
+                </div>
                 <ul style={{display:"flex", flexWrap:"wrap"}}>{fruits.map((fruit, idx)=>(
                         <li style={styles.li} key={idx}>The <a href={`/fruits/${fruit._id}`}>{fruit.name}</a> is {fruit.color}{" "} <br/>
                             {fruit.readyToEat ? `It is ready to eat` : `It is not ready to eat`} <br/>
@@ -24,6 +25,8 @@ class Index extends React.Component{
                             <input type="submit" value="Delete" />
 
                         </form>
+                        
+                        <a href={`/fruits/${fruit._id}/edit`} style={styles.editThisFruit}>Edit This Fruit</a>
 
                         </li>
                 ))}</ul>
@@ -34,6 +37,15 @@ class Index extends React.Component{
 }
 
 const styles = {
+
+    top:{
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"center",
+        alignItems:"center",
+
+    },
+
     container: {backgroundColor:"#33d9b2"},
     
     header: {color:"#fff", fontSize: "50px"},
@@ -50,6 +62,11 @@ const styles = {
         margin: "1rem",
         listStyleType: "none",
         
+    },
+
+    editThisFruit: {
+        textDecoration:"none",
+        padding:"2px",
     }
     }
 

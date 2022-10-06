@@ -182,6 +182,51 @@ app.delete("/fruits/:id",(req,res)=>{
 
 
 
+//========= Edit Route ============
+
+//Return an HTML form for editing a thing
+//  "/fruits/:id/edit" is the path for URL
+app.get("/fruits/:id/edit", (req,res)=>{
+    const {id} = req.params
+    //find the fruit in the db using the id
+    Fruit.findById(id, (error, foundFruit)=>{
+        if(error){
+            console.log(error)
+            res.status(403).send("id not found")
+        }
+    //render the view and pass the data from the fruit
+    //  "fruits/Edit" is directing to the Edit.jsx in views directory
+    res.render("fruits/Edit", {fruit: foundFruit})
+
+    })
+})
+
+
+//========PUT Request / Route ===========
+
+app.put("/fruits/:id", (req,res)=>{
+    const {id} = req.params
+    if(req.body.readyToEat === 'on'){
+        req.body.readyToEat = true;
+    } else {
+        req.body.readyToEat = false;
+    }
+
+    //.findByIdAndUpdate() takes in 3 parameters: ID, req.body, and callback
+    Fruit.findByIdAndUpdate(id, req.body, (error, updatedFruit)=>{
+        if(error){
+            console.log(error)
+            res.status(403).send("Cannot update")
+        }
+        res.redirect(`/fruits/${id}`)
+    })
+
+
+})
+
+
+
+
 
 
 //Vegetables Routes:
