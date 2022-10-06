@@ -235,7 +235,7 @@ app.get("/vegetables", (req,res)=>{
     res.render("vegetables/Index.jsx", {vegetables: vegetablesArray})
 })
 
-
+//Vegetables Show Route
 app.get("/vegetables/:indexOfVegetablesArray", (req,res)=>{
     const {indexOfVegetablesArray} = req.params
 
@@ -249,7 +249,7 @@ app.get("/vegetables/:indexOfVegetablesArray", (req,res)=>{
 
 
 
-//=========== Port & Connectino to MongoDB ==========
+//=========== Port & Connection to MongoDB ==========
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
     

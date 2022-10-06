@@ -45,8 +45,20 @@ module.exports = Index
 
 
 
-============================================================================================
+==================================Setting up View Engine==========================================================
+In terminal: 
 
+npm i express-react-views
+
+//Set up our view engine
+//Below must be after: (const app = express())
+//App settings
+app.set("view engine", "jsx")
+app.engine("jsx", require("express-react-views").createEngine())
+
+
+
+=============================================================================================
 
 
 //=====NOTE: USE MVC (models, views, and controllers) to better organize your data:
