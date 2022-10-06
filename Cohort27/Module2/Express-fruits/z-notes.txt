@@ -216,6 +216,8 @@ We use a Model to perform all CRUD for a given MongoDB collection.
 MongoDB and Mongoose
 https://ps-rtt-sei.herokuapp.com/mod-2/week-8/day-3/slides/
 
+https://ps-rtt-sei.herokuapp.com/mod-2/week-9/day-1/slides/ 
+
 ============= creating environmental file ==================
 
 1. Install in terminal (dotenv)
@@ -275,3 +277,27 @@ Model.find()
 https://mongoosejs.com/docs/api.html#model_Model-find 
 
 empty {} will return all documents in database
+
+
+
+
+
+================ Deleting with npm method-override =======================
+
+with npm.js package method-override
+
+1. in terminal:
+    npm install method-override
+
+
+2. //Importing method override
+const methodOverride = require("method-override")
+
+
+3. //Middleware to override for deleting 
+app.use(methodOverride("_method"))
+
+
+4. <form action={`/fruits/${fruit._id}?_method=DELETE`} method="POST">
+            <input type="submit" value="Delete" />
+   </form>

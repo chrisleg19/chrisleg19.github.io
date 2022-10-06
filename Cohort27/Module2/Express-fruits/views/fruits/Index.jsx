@@ -20,6 +20,11 @@ class Index extends React.Component{
                             <img src={fruit.image} style={{ width:"200px", height:"200px", objectFit:"cover", border:"2px solid black"}}/> 
                         </a>
 
+                        <form action={`/fruits/${fruit._id}?_method=DELETE`} method="POST">
+                            <input type="submit" value="Delete" />
+
+                        </form>
+
                         </li>
                 ))}</ul>
             </div>

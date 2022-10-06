@@ -5,9 +5,7 @@ const express = require("express")
 //Middleware:
 const morgan = require("morgan")  // Morgan is a middleware that will let us know in our terminal that we made a request to the browser
 
-
 //NOTE: importing a npm file just requires the name of the package (above), but if we import another file we must pass the relative file path (below)
-
 
 //importing the data (fruits array) from the file (./models/fruits)
 //fruits not needed after we connect Fruit model
@@ -22,9 +20,11 @@ require("dotenv").config()
 //Importing Mongoose (additional code needed (inside app.listen) to connect to Mongo)
 const mongoose = require("mongoose")
 
+//Importing method override
+const methodOverride = require("method-override")
+
 //Importing Model
 const Fruit = require("./models/FruitModel")
-
 
 //testing dotenv connection(process.env.MONGO_URI will show all environmental variables)
 console.log(process.env.MONGO_URI);  
@@ -33,19 +33,19 @@ console.log(process.env.MONGO_URI);
 //NOTE: npm i -D morgan (in terminal) - to set morgan under "devDependencies" in package.json vs "dependencies".  This will help with keeping your application smaller because morgan isn't listed under "dependencies" 
 //NOTE: -D will place your dependency under "devDependencies" instead of "Dependencies"
 
-
 const app = express()
 const PORT = 3000
 
-//Middleware
+//=========Middleware=============
 app.use(morgan("dev"))  //telling the express app to use morgan, "dev" is used for development.  There are other setups that can be used for different situations:  https://www.npmjs.com/package/morgan 
-
 
 //Use this middleware whenever you have a form and need to access the data from that form 
 //Use this middleware to read the data from post requests (only have to set up once)
 //Without this middleware, your object "body" will be undefined
 app.use(express.urlencoded({extended:false}))
 
+//Middleware to override for deleting 
+app.use(methodOverride("_method"))
 
 //Creating your own Middleware (a function that executes ALL routes)
 //It runs in the middle of the request response cycle 
@@ -57,8 +57,6 @@ app.use((req, res, next)=>{
     next()
 })
 
-
-
 //Set up our view engine
 //Below must be after: (const app = express())
 //App settings
@@ -66,9 +64,7 @@ app.set("view engine", "jsx")
 app.engine("jsx", require("express-react-views").createEngine())
 
 
-
-
-//Routes:
+//*============ Routes: ==================
 
 //NOTE: More specific routes should be at the top
 
@@ -82,7 +78,7 @@ app.get("/", (req, res)=>{
 //Index route: get all fruits (array)
 app.get("/fruits", (req, res)=>{
     //This method (with {}) finds all documents in database
-    //The first parameter is a filter object (a blank object sends all documents)
+    //The first parameter is a FILTER OBJECT (a blank object sends all documents from database)
     Fruit.find({},(error,fruitsFromDb)=>{
         if(error){
             console.log(error)
@@ -91,23 +87,22 @@ app.get("/fruits", (req, res)=>{
         //response is JSON data, showing the array "fruits"
         // res.send(fruits)
         //rendering a template file:
-        res.render("fruits/Index.jsx", {fruits: fruitsFromDb})
+        res.render("fruits/Index", {fruits: fruitsFromDb})
     })
 })
 
-
 //================Post Route (to create)=========================
-
 
 app.post("/fruits", (req,res)=>{
     //req.body is where your data is going
     // console.log(req.body)
-    let {readyToEat} = req.body
-    if(readyToEat === "on"){ //if checked, readyToEat is set to 'on'
-        readyToEat = true; //do some data correction
-    } else { //if not checked, readyToEat is undefined
-        readyToEat = false; //do some data correction
-    }
+
+    if (req.body.readyToEat === "on") {
+        req.body.readyToEat = true;
+      } else {
+        req.body.readyToEat = false;
+      }
+    
     // fruits.push(req.body);  //No longer needed if sending data to database
     
     //Using our model to create a new resource in our database
@@ -120,19 +115,16 @@ app.post("/fruits", (req,res)=>{
     })
 })
 
-
 app.post("/vegetables", (req,res)=>{
     console.log(req.body)
-    let {readyToEat} = req.body
-    if(readyToEat === "on"){
-        readyToEat = true;
+    if(req.body.readyToEat === "on"){
+        req.body.readyToEat = true;
     } else{
-        readyToEat = false;
+        req.body.readyToEat = false;
     }
     console.log(req.body)
     vegetablesArray.push(req.body);
     res.redirect("/vegetables")
-
 })
 
 
@@ -142,11 +134,9 @@ app.get("/fruits/new", (req,res)=>{
 
 })
 
-
 app.get("/vegetables/new", (req, res)=>{
     res.render("vegetables/New")
 })
-
 
 
 //===================Show Route===============
@@ -156,17 +146,42 @@ app.get("/fruits/:id", (req, res)=>{
     const {id} = req.params;  //destructuring
     //// res.send(fruits[id])
     //passing an object with a property fruit to "Show". The value of the property is fruits[id]
-    
+    //getting data from db
     Fruit.findById(id, (error, foundFruit) =>{
         if(error){
             console.log(error)
+            res.status(403).send("Id not found")
         }
+        //sending the view with the data found in the db
         res.render("fruits/Show", {                  //second param must be an object
            fruit: foundFruit,  //there will be a variable available inside the ejs file called fruit, its value is fruits[id]
            date: new Date().getFullYear(),
         })
     })
 });
+
+
+//==========Delete Route===========
+
+app.delete("/fruits/:id",(req,res)=>{
+    //Note: id is coming from the "delete form" in the Index.jsx
+    const {id} = req.params;
+
+    //Delete fruit from db
+    //findByIdAndRemove() will give you the deleted object back for a callback
+    Fruit.findByIdAndRemove(id, (error, data)=>{
+        console.log("HERE is data we are trying to delete",data);
+        if(error){
+            console.log(error)
+            res.status(403).send("Bad Request")
+        }
+        res.redirect("/fruits")
+    })
+})
+
+
+
+
 
 
 //Vegetables Routes:
@@ -189,7 +204,7 @@ app.get("/vegetables/:indexOfVegetablesArray", (req,res)=>{
 
 
 
-//Port:
+//=========== Port & Connectino to MongoDB ==========
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
     
