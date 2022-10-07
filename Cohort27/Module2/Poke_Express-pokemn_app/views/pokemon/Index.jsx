@@ -10,6 +10,8 @@ class Index extends React.Component{
                 
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/269px-International_Pok%C3%A9mon_logo.svg.png?20150121202211" alt="pokemon" />
 
+                <a style={styles.createNew} href="/pokemon/new">Create New Pokemon</a>
+
                 <ul style={styles.ul}>{pokemon.map((poke,idx)=>(
                     <li style={styles.li} key={idx}><a href={`/pokemon/${idx}`}>{poke.name}</a> is type {poke.type}.
                     <br/>
@@ -17,6 +19,8 @@ class Index extends React.Component{
                     <br/>
                     <a href={`/pokemon/${idx}`}>
                         <img src={poke.image} /></a>
+                    <br/>
+                    <a href={`/pokemon/${idx}/edit`}>Edit this Pokemon</a>
                     </li>
                 ))}</ul>
                 
@@ -36,6 +40,16 @@ const styles = {
         alignItems:"center",
         
     },
+
+    createNew:{
+        textDecoration:"none",
+        fontWeight:"bold",
+        backgroundColor:"#4cd137",
+        borderRadius:"10px",
+        padding:".5em",
+        color:"#fff",
+    },
+
     ul:{
         display:"flex",
         flexWrap:"wrap",
@@ -45,7 +59,9 @@ const styles = {
     },
     li:{
         listStyle:"none",
-        margin:"0 10px 0 10px",
+        margin:"5px 10px 5px 10px",
+        border:"1px solid #192a56 ",
+        padding:"1em",
     },
     
 }

@@ -23,18 +23,49 @@ app.get("/",(req,res)=>{
 })
 
 
-//Index:
+//Index (GET ROUTE):
 app.get("/pokemon",(req,res)=>{
     res.render("pokemon/Index",{pokemon: pokemonArray})
 })
 
 
-//Show:
+//Post (CREATE ROUTE):
+
+//render form (New)
+app.get("/pokemon/new", (req,res)=>{
+    res.render("pokemon/New",)
+})
+
+//post new entry
+app.post("/pokemon",(req,res)=>{
+    if(req.body.isCool==="on"){
+        req.body.isCool = true;
+    } else{
+        req.body.isCool = false;
+    }
+    pokemonArray.push(req.body)
+    res.redirect("/pokemon")
+})
+
+
+//Show (GET ROUTE):
 app.get("/pokemon/:indexOfPokemonArray",(req,res)=>{
     const {indexOfPokemonArray} = req.params
 
     res.render("pokemon/Show",{pokemon: pokemonArray[indexOfPokemonArray]})
 })
+
+
+//Put / Edit Route
+
+//render Edit form
+app.get("/pokemon/:indexOfPokemonArray/edit", (req,res)=>{
+    const {indexOfPokemonArray} =req.params
+    console.log(pokemonArray[indexOfPokemonArray].image)
+
+    res.render("pokemon/Edit",{pokemon: pokemonArray[indexOfPokemonArray]})
+})
+
 
 
 

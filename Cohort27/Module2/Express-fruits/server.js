@@ -182,7 +182,7 @@ app.delete("/fruits/:id",(req,res)=>{
 
 
 
-//========= Edit Route ============
+//========= Get by ID Route ============
 
 //Return an HTML form for editing a thing
 //  "/fruits/:id/edit" is the path for URL
@@ -202,7 +202,7 @@ app.get("/fruits/:id/edit", (req,res)=>{
 })
 
 
-//========PUT Request / Route ===========
+//========PUT / Edit Route ===========
 
 app.put("/fruits/:id", (req,res)=>{
     const {id} = req.params
