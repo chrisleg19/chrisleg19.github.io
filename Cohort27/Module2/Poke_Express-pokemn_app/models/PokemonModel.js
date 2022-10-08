@@ -11,6 +11,6 @@ const pokemonSchema = new mongoose.Schema({
     abilities: {type: String, required: true},
 });
 
-const PokeModel = mongoose.model("PokeModel", pokemonSchema)
+const PokeModel = mongoose.model("PokeModel", pokemonSchema);
 
-module.exports = PokeModel
+module.exports = PokeModel;

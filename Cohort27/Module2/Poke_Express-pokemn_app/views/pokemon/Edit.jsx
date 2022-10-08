@@ -4,15 +4,19 @@ const pokemonArray = require("../../models/listOfPokemon");
 
 class Edit extends React.Component{
     render(){
-        console.log("from edit page", this.props)
+        console.log("from edit page", this.props.pokemon)
         const {pokemon} = this.props
+        console.log(pokemon)
         return(
             <body style={styles.body}>
                 
                 <h1>Edit Pokemon</h1>
 
                 
-                <form action={`/pokemon/${pokemon._id}?_method=PUT`} method="POST" style={styles.form}>
+
+
+                <form style={styles.form} action={`/pokemon/${pokemon._id}?_method=PUT`} method="POST">
+                
                 
                 Name:<input style={styles.name} type="text" name="name" defaultValue={pokemon.name}/>
                 <br/>
@@ -31,7 +35,7 @@ class Edit extends React.Component{
                 Abilities:<input style={styles.abilities}  type="text" name="abilities" defaultValue={pokemon.abilities}/>
                 <br/>
                 
-                <input style={styles.button}type="submit" value="Edit Pokemon" />
+                <input style={styles.button} type="submit" value="Edit Pokemon" />
                 
                 </form>
                 

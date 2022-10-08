@@ -5,7 +5,7 @@ const pokemonArray = require("./models/listOfPokemon")
 require("dotenv").config()
 const mongoose = require("mongoose")
 
-const methodOverride = require("method-override")
+const methodOverride = require('method-override')
 const PokeModel = require("./models/PokemonModel")
 
 console.log(process.env.MONGO_URI)
@@ -17,7 +17,7 @@ const PORT = 3000
 //middleware
 app.use(express.urlencoded({extended:false}))
 app.use(morgan("dev"))
-app.use(methodOverride("_method"))
+app.use(methodOverride('_method'))
 app.use((req,res, next)=>{
     console.log("I run for all routes")
     next()
@@ -53,14 +53,9 @@ app.get("/pokemon",(req,res)=>{
 
 //================== Post (CREATE ROUTE) - Create new entry in db: ==================
 
-//render form (New)
-app.get("/pokemon/new", (req,res)=>{
-    res.render("pokemon/New",)
-})
-
 //post new entry
 app.post("/pokemon",(req,res)=>{
-    if(req.body.isCool==="on"){
+    if(req.body.isCool === "on"){
         req.body.isCool = true;
     } else{
         req.body.isCool = false;
@@ -73,6 +68,12 @@ app.post("/pokemon",(req,res)=>{
         console.log(createdPokemon)
         res.redirect("/pokemon")
     })
+})
+
+
+//render form (New)
+app.get("/pokemon/new", (req,res)=>{
+    res.render("pokemon/New",)
 })
 
 
@@ -110,11 +111,13 @@ app.delete("/pokemon/:id", (req,res)=>{
 //find data you want to update by db id and render Edit form
 app.get("/pokemon/:id/edit", (req,res)=>{
     const {id} = req.params
+    console.log("getting info for the edit form")
         PokeModel.findById(id,(error,foundPokemon)=>{
         if(error){
             console.log(error)
             res.status(403).send("id not found")
         }
+        console.log("placing info on edit form")
         res.render("pokemon/Edit",{pokemon: foundPokemon})
     })
 })
@@ -123,7 +126,8 @@ app.get("/pokemon/:id/edit", (req,res)=>{
 //update db with entry from Edit form
 app.put("pokemon/:id", (req,res)=>{
     const {id} = req.params
-    if(req.body.isCool==="on"){
+    console.log("updating database with new pokemon info")
+    if(req.body.isCool === "on"){
         req.body.isCool = true;
     } else{
         req.body.isCool = false;

@@ -206,6 +206,7 @@ app.get("/fruits/:id/edit", (req,res)=>{
 
 app.put("/fruits/:id", (req,res)=>{
     const {id} = req.params
+    console.log("updating database with new fruit info")
     if(req.body.readyToEat === 'on'){
         req.body.readyToEat = true;
     } else {
