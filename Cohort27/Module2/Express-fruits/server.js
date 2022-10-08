@@ -154,7 +154,7 @@ app.get("/fruits/:id", (req, res)=>{
         }
         //sending the view with the data found in the db
         res.render("fruits/Show", {                  //second param must be an object
-           fruit: foundFruit,  //there will be a variable available inside the ejs file called fruit, its value is fruits[id]
+           fruit: foundFruit,  //there will be a variable available inside the ejs(Index.jsx) file called fruit, its value is fruits[id]
            date: new Date().getFullYear(),
         })
     })

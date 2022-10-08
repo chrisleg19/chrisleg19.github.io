@@ -235,7 +235,9 @@ https://ps-rtt-sei.herokuapp.com/mod-2/week-9/day-1/slides/
 1. Install in terminal (dotenv)
  npm i dotenv
 
-2. add .env to your .gitignore file
+2. Create a .env file in the root of the project
+
+3. add .env to your .gitignore file
 
 - .env is used to create environmental files.  
 - Stores userName and password to your database.
@@ -251,7 +253,7 @@ MONGO_URI=mongodb+srv://USERNAME:PASSWORD@cluster0.lkbzzlk.mongodb.net/?retryWri
 
 2. const mongoose = require('mongoose');
 
-    //... and then farther down the file
+    //... and then farther down the file (inside of app.listen)
     mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
     mongoose.connection.once('open', ()=> {
         console.log('connected to mongo');

@@ -2,6 +2,14 @@
 const express = require("express")
 const morgan = require("morgan")
 const pokemonArray = require("./models/listOfPokemon")
+require("dotenv").config()
+const mongoose = require("mongoose")
+
+const methodOverride = require("method-override")
+const PokeModel = require("./models/PokemonModel")
+
+console.log(process.env.MONGO_URI)
+
 
 const app = express()
 const PORT = 3000
@@ -9,6 +17,12 @@ const PORT = 3000
 //middleware
 app.use(express.urlencoded({extended:false}))
 app.use(morgan("dev"))
+app.use(methodOverride("_method"))
+app.use((req,res, next)=>{
+    console.log("I run for all routes")
+    next()
+})
+
 
 //view engine
 app.set("view engine", "jsx")
@@ -23,13 +37,21 @@ app.get("/",(req,res)=>{
 })
 
 
-//Index (GET ROUTE):
+//================== Index (GET ROUTE) - Shows everything in db: ===================
+
 app.get("/pokemon",(req,res)=>{
-    res.render("pokemon/Index",{pokemon: pokemonArray})
+
+    PokeModel.find({},(error,pokemonFromDb)=>{
+        if(error){
+            console.log(error)
+        }
+        console.log(pokemonFromDb)
+        res.render("pokemon/Index",{pokemon: pokemonFromDb})
+    })
 })
 
 
-//Post (CREATE ROUTE):
+//================== Post (CREATE ROUTE) - Create new entry in db: ==================
 
 //render form (New)
 app.get("/pokemon/new", (req,res)=>{
@@ -43,28 +65,80 @@ app.post("/pokemon",(req,res)=>{
     } else{
         req.body.isCool = false;
     }
-    pokemonArray.push(req.body)
-    res.redirect("/pokemon")
+    // pokemonArray.push(req.body)
+    PokeModel.create(req.body, (error, createdPokemon)=>{
+        if(error){
+            console.log(error)
+        }
+        console.log(createdPokemon)
+        res.redirect("/pokemon")
+    })
 })
 
 
-//Show (GET ROUTE):
-app.get("/pokemon/:indexOfPokemonArray",(req,res)=>{
-    const {indexOfPokemonArray} = req.params
+//=================== Show (GET ROUTE) - displays info on single entry in db: =====================
 
-    res.render("pokemon/Show",{pokemon: pokemonArray[indexOfPokemonArray]})
+app.get("/pokemon/:id",(req,res)=>{
+    const {id} = req.params
+    console.log(id)
+    PokeModel.findById(id, (error, foundPokemon)=>{
+        if(error){
+            console.log(error)
+            res.status(403).send("id not found")
+        }
+        res.render("pokemon/Show",{pokemon: foundPokemon})
+    })
 })
 
 
-//Put / Edit Route
-
-//render Edit form
-app.get("/pokemon/:indexOfPokemonArray/edit", (req,res)=>{
-    const {indexOfPokemonArray} =req.params
-    console.log(pokemonArray[indexOfPokemonArray].image)
-
-    res.render("pokemon/Edit",{pokemon: pokemonArray[indexOfPokemonArray]})
+//=================== Delete (DELETE ROUTE) - delete data from db ===============
+app.delete("/pokemon/:id", (req,res)=>{
+    const {id} = req.params;
+    PokeModel.findByIdAndRemove(id, (error, data)=>{
+        console.log("DATA WE WANT TO DELETE", data);
+        if(error){
+            console.log(error)
+            res.status(403).send("Bad Request")
+        }
+        res.redirect("/pokemon")
+    })
 })
+
+
+//=================== Edit (PUT ROUTE) - edit data in db ========================
+
+//find data you want to update by db id and render Edit form
+app.get("/pokemon/:id/edit", (req,res)=>{
+    const {id} = req.params
+        PokeModel.findById(id,(error,foundPokemon)=>{
+        if(error){
+            console.log(error)
+            res.status(403).send("id not found")
+        }
+        res.render("pokemon/Edit",{pokemon: foundPokemon})
+    })
+})
+
+
+//update db with entry from Edit form
+app.put("pokemon/:id", (req,res)=>{
+    const {id} = req.params
+    if(req.body.isCool==="on"){
+        req.body.isCool = true;
+    } else{
+        req.body.isCool = false;
+    }
+    PokeModel.findByIdAndUpdate(id, req.body, (error, updatedPokemon)=>{
+        if(error){
+            console.log(error)
+            res.status(403).send("cannot update")
+        }
+        res.redirect(`/pokemon/${id}`)
+    })
+})
+
+
+
 
 
 
@@ -72,4 +146,12 @@ app.get("/pokemon/:indexOfPokemonArray/edit", (req,res)=>{
 //port:
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
+
+    mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    mongoose.connection.once("open", ()=>{
+        console.log("connected to mongo")
+    })
 })

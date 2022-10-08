@@ -15,6 +15,8 @@ class New extends React.Component{
                 <br/>
                 Type:<input style={styles.type}  type="text" name="type"/>
                 <br/>
+                Number:<input style={styles.number} type="text" name="number"/>
+                <br/>
                 Image:<input style={styles.image}  type="text" name="image" placeholder="image url"/>
                 <br/>
                 Is Cool:<input style={styles.isCool}  type="checkbox" name="isCool"/>
@@ -71,6 +73,12 @@ const styles = {
         marginLeft:"2em",
         border:"2px solid black",
         width:"15em",     
+    },
+
+    number:{
+        marginLeft:".6em",
+        border:"2px solid black",
+        width:"15em",
     },
     
     image:{
