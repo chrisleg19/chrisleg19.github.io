@@ -7,7 +7,6 @@ class New extends React.Component{
             <body style={styles.body}>
                 
                 <h1>Create New Pokemon</h1>
-
                 
                 <form action="/pokemon" method="POST" style={styles.form}>
                 
@@ -47,10 +46,6 @@ const styles = {
         flexDirection:"column",
         alignItems:"center",
     },
-
-    // header:{
-    //     marginLeft:"1.5em",
-    // },
 
     form:{
         margin:"20px",

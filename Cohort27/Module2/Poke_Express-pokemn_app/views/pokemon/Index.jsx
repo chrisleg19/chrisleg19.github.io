@@ -7,7 +7,6 @@ class Index extends React.Component{
         return(
             <body style={styles.body}>
             
-                
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/269px-International_Pok%C3%A9mon_logo.svg.png?20150121202211" alt="pokemon" />
 
                 <a style={styles.createNew} href="/pokemon/new">Create New Pokemon</a>

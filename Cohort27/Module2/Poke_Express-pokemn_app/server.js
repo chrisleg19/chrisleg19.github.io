@@ -1,44 +1,38 @@
-//Imports
+//======================= Imports ===============================
 const express = require("express")
 const morgan = require("morgan")
 const pokemonArray = require("./models/listOfPokemon")
 require("dotenv").config()
 const mongoose = require("mongoose")
-
 const methodOverride = require('method-override')
 const PokeModel = require("./models/PokemonModel")
 
 console.log(process.env.MONGO_URI)
 
-
 const app = express()
 const PORT = 3000
 
 //middleware
-app.use(express.urlencoded({extended:false}))
 app.use(morgan("dev"))
+app.use(express.urlencoded({extended:false}))
 app.use(methodOverride('_method'))
 app.use((req,res, next)=>{
     console.log("I run for all routes")
     next()
 })
 
-
 //view engine
 app.set("view engine", "jsx")
 app.engine("jsx", require("express-react-views").createEngine())
 
-
-//Routes:
+//======================== Routes: =================================
 
 //Root:
 app.get("/",(req,res)=>{
     res.send("Root works!")
 })
 
-
-//================== Index (GET ROUTE) - Shows everything in db: ===================
-
+//================== Index (GET ROUTE) - Shows everything from db: ===================
 app.get("/pokemon",(req,res)=>{
 
     PokeModel.find({},(error,pokemonFromDb)=>{
@@ -50,9 +44,7 @@ app.get("/pokemon",(req,res)=>{
     })
 })
 
-
-//================== Post (CREATE ROUTE) - Create new entry in db: ==================
-
+//================== Post (CREATE ROUTE) - Create new entry in db: ========================
 //post new entry
 app.post("/pokemon",(req,res)=>{
     if(req.body.isCool === "on"){
@@ -70,15 +62,12 @@ app.post("/pokemon",(req,res)=>{
     })
 })
 
-
 //render form (New)
 app.get("/pokemon/new", (req,res)=>{
     res.render("pokemon/New",)
 })
 
-
-//=================== Show (GET ROUTE) - displays info on single entry in db: =====================
-
+//=================== Show (GET ROUTE) - displays info on single entry from db: =====================
 app.get("/pokemon/:id",(req,res)=>{
     const {id} = req.params
     console.log(id)
@@ -90,7 +79,6 @@ app.get("/pokemon/:id",(req,res)=>{
         res.render("pokemon/Show",{pokemon: foundPokemon})
     })
 })
-
 
 //=================== Delete (DELETE ROUTE) - delete data from db ===============
 app.delete("/pokemon/:id", (req,res)=>{
@@ -105,10 +93,8 @@ app.delete("/pokemon/:id", (req,res)=>{
     })
 })
 
-
 //=================== Edit (PUT ROUTE) - edit data in db ========================
-
-//find data you want to update by db id and render Edit form
+//find data you want to update using db id and render Edit form
 app.get("/pokemon/:id/edit", (req,res)=>{
     const {id} = req.params
     console.log("getting info for the edit form")
@@ -122,9 +108,8 @@ app.get("/pokemon/:id/edit", (req,res)=>{
     })
 })
 
-
 //update db with entry from Edit form
-app.put("pokemon/:id", (req,res)=>{
+app.put("/pokemon/:id", (req,res)=>{
     const {id} = req.params
     console.log("updating database with new pokemon info")
     if(req.body.isCool === "on"){
@@ -141,13 +126,7 @@ app.put("pokemon/:id", (req,res)=>{
     })
 })
 
-
-
-
-
-
-
-//port:
+//======================= port & mongoose connection: ======================
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 

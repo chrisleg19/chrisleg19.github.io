@@ -10,13 +10,9 @@ class Edit extends React.Component{
         return(
             <body style={styles.body}>
                 
-                <h1>Edit Pokemon</h1>
-
-                
-
+                <h1>Edit Pokemon</h1> 
 
                 <form style={styles.form} action={`/pokemon/${pokemon._id}?_method=PUT`} method="POST">
-                
                 
                 Name:<input style={styles.name} type="text" name="name" defaultValue={pokemon.name}/>
                 <br/>
