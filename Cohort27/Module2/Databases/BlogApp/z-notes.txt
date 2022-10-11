@@ -4,5 +4,90 @@ https://ps-rtt-sei.herokuapp.com/mod-2/week-8/day-4/slides/
 Popular Database Engines:
 https://db-engines.com/en/ranking 
 
+NOTE: Server-Side Rendering apps will have models, views and controllers.  Apps that don't use server side rendering will have a front end React app, and the back end will have Models and Controllers (no view)
 
-noSQL databases are a little faster than relational databases 
+==================================================================================================================
+
+
+NPM Installs in terminal:
+
+1. npm init -y
+2. npm i express
+3. npm i morgan  (npm i -D morgan) 
+4. npm i mongoose
+5. npm i dotenv
+6. npm i method-override
+7. npm i express-react-views  
+8. npm i react-dom
+
+
+============================
+USING POSTMAN FOR ROUTE TESTING WITHOUT FRONTEND VIEWS
+
+Testing GET Request with Postman
+--------------------------------
+1. Go to workspace
+2. Go to Collections
+3. Click + sign to create a new workspace
+4. Select GET request 
+5. Type in http://localhost:3000 
+6. Click send
+-
+7. In bottom 1/2 of screen, select Body
+8. Select Pretty
+9. You should see your get request (Ex: Hello from BlogRouter)
+
+Testing POST Request with Postman
+---------------------------------
+1. Change GET to POST
+2. Select JSON data Type (instead of "Text")
+3. Input your object data 
+    Note: Data must be formatted as ex. below:
+    {
+    "title": "Deep Thoughts",
+    "body": "Friends, I am the realest coder alive",
+    "author": "Arthur"
+    }
+4. Click send
+-
+5. In bottom 1/2 of screen, select Body
+6. Select Pretty
+7. Select JSON
+8. Data should be displayed in Postman & MongoDB
+    Postman display of data:
+    {
+    "title": "Deep Thoughts",
+    "body": "Friends, I am the realest coder alive",
+    "author": "Arthur",
+    "likes": 0,
+    "sponsored": false,
+    "_id": "6345b0b8b021b3e1cfa61acb",
+    "created_at": "2022-10-11T18:06:48.336Z",
+    "updatedAt": "2022-10-11T18:06:48.336Z",
+    "__v": 0
+    }
+
+Testing PUT (update) Request.
+ ----------------------------
+1. input the :id after the /blog/
+ ex: http://localhost:3000/blog/6345b0b8b021b3e1cfa61acb
+2. change post to PUT
+3. edit the data
+4. send
+
+Testing DELETE Request 
+----------------------
+1. input the :id after the /blog/
+2. change put to DELETE
+3. send
+
+
+=================================
+
+Using controllers folder to store/use routes
+
+https://expressjs.com/en/guide/routing.html 
+
+Use: express.Router
+
+Ex: BlogRouter.js
