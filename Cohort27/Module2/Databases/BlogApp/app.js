@@ -14,8 +14,9 @@ app.use(express.json())
 
 
 //telling app.js to use the BlogRouter.js for any routes with endpoint /blog
+//telling app.js to use the UserRouter.js for any routes with endpoint /user
 app.use("/blog", require("./controllers/BlogRouter"))
-// example of user router - app.use("/user", require("./controller/UserRouter"))
+app.use("/user", require("./controllers/UserRouter"))
 
 
 
