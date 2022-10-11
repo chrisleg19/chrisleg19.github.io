@@ -1,0 +1,8 @@
+Slides:
+https://ps-rtt-sei.herokuapp.com/mod-2/week-8/day-4/slides/ 
+
+Popular Database Engines:
+https://db-engines.com/en/ranking 
+
+
+noSQL databases are a little faster than relational databases 
