@@ -11,6 +11,7 @@ const PORT = 3000
 //setting up static folder for resources
 app.use(express.static("public"))
 app.use(morgan("dev"))
+app.use(express.urlencoded({extended:false}))
 //replaces urlencoded (This middleware is available in Express v4.16.0 onwards.)
 app.use(express.json()) 
 

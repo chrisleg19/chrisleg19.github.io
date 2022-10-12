@@ -25,21 +25,6 @@ router.get("/", async (req,res)=>{
 })
 
 
-//============ GET: Get Blog by ID 
-
-//because this is part of the blogs router, its already prefixed with router.get("/blogs/:id", (req,res)=>{})...but I don't have to input
-router.get("/:id", async(req, res)=>{
-    try{
-        const blogInDb = await BlogModel.findById(req.params.id)
-        // res.send(blog)
-        res.render("Blogs/BlogShow",{blog: blogInDb})
-    } catch (error){
-        console.log(error)
-        res.status(403).send("Cannot get")
-    }
-})
-
-
 //=========== POST: Create new Blog
 
 //======== Example with async await: =========
@@ -52,14 +37,21 @@ router.post("/", async (req, res)=>{
         const newBlog = await BlogModel.create(req.body)
         console.log(newBlog)
         // res.send(newBlog) 
-        res.redirect("/blog")
+        res.redirect("/")
     }catch(error){
         console.log(error);
         res.send(403).send("Cannot create")
     }
 })
 
-
+router.get("/new", async(req,res)=>{
+    try{
+        res.render("Blogs/NewBlog")
+    }catch(error){
+        console.log(error)
+        res.status(403).send("Cannot Get NewBlog Form")
+    }
+})
 
 //======= Example with .then & .catch =========
 
@@ -79,6 +71,23 @@ router.post("/", async (req, res)=>{
     //     res.status(403).send("Cannot create")
     // })
 // })
+
+
+//============ GET: Get Blog by ID 
+
+//because this is part of the blogs router, its already prefixed with router.get("/blogs/:id", (req,res)=>{})...but I don't have to input
+router.get("/:id", async(req, res)=>{
+    try{
+        const blogInDb = await BlogModel.findById(req.params.id)
+        // res.send(blog)
+        res.render("Blogs/BlogShow",{blog: blogInDb})
+    } catch (error){
+        console.log(error)
+        res.status(403).send("Cannot get")
+    }
+})
+
+
 
 
 // ============ PUT: Update by ID
