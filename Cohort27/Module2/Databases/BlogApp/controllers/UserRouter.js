@@ -6,8 +6,9 @@ const router = express.Router()
 // GET all users
 router.get("/", async (req,res)=>{
     try{
-        const users = await UserModel.find({})
-        res.send(users)
+        const usersFromDb = await UserModel.find({})
+        // res.send(users)
+        res.render("Users/Users", {users: usersFromDb})
     } catch (error){
         console.log(error)
         res.send(403).send("Cannot Get All Users")
@@ -28,6 +29,16 @@ router.get("/:id", async (req,res)=>{
 //POST (create) new user
 router.post("/", async (req, res)=>{
     try{
+        //Checking if email (or username) already exist before attempting to post
+        const userAlreadyExist = await UserModel.find({email: req.body.email});
+        console.log(userAlreadyExist)
+        //Note: An empty array will return, so use [0] to check if there is an object in the array at index 0.
+        if (userAlreadyExist[0]){
+            //Note: Use return keyword to stop code since "user already exist".  If user doesn't exist, the code moves forward to creating new user.
+           return res.send ("User Already Exist!")
+        }
+
+        //creating new user
         const newUser = await UserModel.create(req.body)
         res.send(newUser)
     }catch(error){

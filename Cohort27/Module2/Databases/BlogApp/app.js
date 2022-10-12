@@ -3,13 +3,20 @@ const mongoose = require ("mongoose")
 const morgan = require("morgan")
 require("dotenv").config()
 
+
 const app = express()
 const PORT = 3000
 
 //middleware
+//setting up static folder for resources
+app.use(express.static("public"))
 app.use(morgan("dev"))
 //replaces urlencoded (This middleware is available in Express v4.16.0 onwards.)
 app.use(express.json()) 
+
+//set up view engine
+app.set("view engine", "jsx")
+app.engine("jsx", require("express-react-views").createEngine())
 
 
 
@@ -23,7 +30,8 @@ app.use("/user", require("./controllers/UserRouter"))
 //BELOW NOT NEEDED with app.use("/blog, require("./controllers/BlogRouter"))
 //Can be used a homepage
 app.get("/", (req, res)=>{
-    res.send("Hello")
+    // 
+    res.render("pages/homepage")
 })
 
 

@@ -91,3 +91,10 @@ https://expressjs.com/en/guide/routing.html
 Use: express.Router
 
 Ex: BlogRouter.js
+
+
+=========================================================================
+
+Setting up static files (Express)
+
+http://expressjs.com/en/starter/static-files.html#serving-static-files-in-express 

@@ -1,4 +1,5 @@
 //bring in express
+const { application } = require("express")
 const express = require("express")
 const BlogModel = require("../models/BlogSchema")
 
@@ -14,8 +15,9 @@ router.get("/", async (req,res)=>{
     //.find({}) with an empty object returns all documents from db
     //.find({email:"someone@email.com"}) is an example of using a filter to find specific data in db
     //docs: https://mongoosejs.com/docs/api.html#model_Model-find
-    const blogs = await BlogModel.find({})
-    res.send(blogs)
+    const blogsFromDb = await BlogModel.find({})
+    // res.send(blogs)
+    res.render("Blogs/Blogs", {blogs: blogsFromDb})
     } catch (error){
         console.log(error);
         res.send(403).send("Cannot get")
@@ -28,8 +30,9 @@ router.get("/", async (req,res)=>{
 //because this is part of the blogs router, its already prefixed with router.get("/blogs/:id", (req,res)=>{})...but I don't have to input
 router.get("/:id", async(req, res)=>{
     try{
-        const blog = await BlogModel.findById(req.params.id)
-        res.send(blog)
+        const blogInDb = await BlogModel.findById(req.params.id)
+        // res.send(blog)
+        res.render("Blogs/BlogShow",{blog: blogInDb})
     } catch (error){
         console.log(error)
         res.status(403).send("Cannot get")
@@ -47,12 +50,16 @@ router.get("/:id", async(req, res)=>{
 router.post("/", async (req, res)=>{
     try{
         const newBlog = await BlogModel.create(req.body)
-        res.send(newBlog) 
+        console.log(newBlog)
+        // res.send(newBlog) 
+        res.redirect("/blog")
     }catch(error){
         console.log(error);
         res.send(403).send("Cannot create")
     }
 })
+
+
 
 //======= Example with .then & .catch =========
 
