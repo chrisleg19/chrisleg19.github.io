@@ -98,3 +98,21 @@ Ex: BlogRouter.js
 Setting up static files (Express)
 
 http://expressjs.com/en/starter/static-files.html#serving-static-files-in-express 
+
+
+
+
+
+===================================================
+
+Adding CSS hover effect: 
+
+1. Add hover to your css file using a class name.
+2. In your view, add "className" to your element in the view page.
+
+
+
+=======================
+sessions to check if authors are logged in:
+
+example: {blog.user === session.user ? div with form  :  div with nothing}

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    background-color: #D8D8D8;
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+h1 {
+  font-family: Poppins;
+  margin:0;
+  margin-bottom: .25em;
+  padding: 1em;
+  text-align: center;
+  text-shadow: 1px 1px 1px orange;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link, a:visited, a:active{
+  color: orange;
+  text-shadow: 1px 1px 2px black;
+  font-size: 1.25rem;
+}
+
+a:hover {
+  color: ghostwhite;
+}

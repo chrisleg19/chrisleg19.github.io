@@ -1,4 +1,5 @@
 const React = require("react")
+const Navbar = require("../components/Navbar")
 
 class Blogs extends React.Component{
     render(){
@@ -7,25 +8,41 @@ class Blogs extends React.Component{
         return(
             <body>
                 <head>
-                    <link rel="stylesheet" href="/CSS/app.css"/> 
+                    <link rel="stylesheet" href="/CSS/blogs.css"/> 
                 </head>
-                <h1>Blogs View Page</h1>
-                <a href="/">Home</a>
 
-                <ul>
+                <Navbar/>
+
+                <h1>All Blogs</h1>
+                
+
+                <ul className="blogsCont">
                     {blogs.map((blog,idx)=>(
-                        <li key={idx}>
-                            Title: <a href={`/blog/${blog._id}`}>{blog.title}</a>
-                            <br/>
-                            Author: <h3>{blog.author}</h3> 
-                            <br/>
-                            Likes:  <h3>{blog.likes}</h3>
+                        <li className="blogsPreview" key={idx}>
+                            <div className="bpHeaders">
+                            <h3>Title:</h3><h4><a href={`/blog/${blog._id}`}>{blog.title}</a></h4>
+                            </div>
+                            
+                            <div className="bpHeaders">
+                            <h3>Author:</h3> <h4>{blog.author}</h4> 
+                            </div>
+
+                            <div className="bpHeaders">
+                                <image className="authImg" src={blog.authorImage}></image>
+                            </div>
+                            
+                            <div className="bpHeaders">
+                            <h3>Likes:</h3>  <h4>{blog.likes}</h4>
+                            </div>
                         </li>
 
 
                     ))}
 
                 </ul>
+                <div className="createNewDiv">
+                <a className="createNewBtn" href="/blog/new">Create New Blog</a>
+                </div>
                 
             </body>
 

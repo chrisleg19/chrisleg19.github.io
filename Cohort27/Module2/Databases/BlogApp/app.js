@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require ("mongoose")
 const morgan = require("morgan")
+const methodOverride = require('method-override')
 require("dotenv").config()
 
 
@@ -12,6 +13,7 @@ const PORT = 3000
 app.use(express.static("public"))
 app.use(morgan("dev"))
 app.use(express.urlencoded({extended:false}))
+app.use(methodOverride('_method'))
 //replaces urlencoded (This middleware is available in Express v4.16.0 onwards.)
 app.use(express.json()) 
 

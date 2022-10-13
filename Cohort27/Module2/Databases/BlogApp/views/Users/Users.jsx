@@ -1,4 +1,5 @@
 const React = require ("react")
+const Navbar = require("../components/Navbar")
 
 class Users extends React.Component{
     render(){
@@ -6,9 +7,11 @@ class Users extends React.Component{
         return(
             <body>
                 <head>
-                <link rel="stylesheet" href="/CSS/app.css"/>
+                <link rel="stylesheet" href="/CSS/users.css"/>
                 </head>
 
+                <Navbar/>
+                
                 <h1>Users Page</h1>
                 <a href="/">Home</a>
 
