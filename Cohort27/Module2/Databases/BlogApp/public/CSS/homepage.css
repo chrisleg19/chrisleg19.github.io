@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
 
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
@@ -12,7 +12,8 @@ body {
 }
 
 h1 {
-  font-family: Poppins;
+  font-family: Silkscreen;
+  
   margin:0;
   margin-bottom: .25em;
   padding: 1em;
@@ -47,6 +48,9 @@ a:hover {
   width:200px; 
   height:200px; 
   object-fit:cover;
+  border: solid 2px #967E76;
+  overflow: hidden;
+  box-shadow: 3px 3px 3px #182747;
 }
 
 .homeContainer{
@@ -71,12 +75,13 @@ a:hover {
 
 .borders1{
   padding: .25em;
+  /* border: solid 1px green; */
   border: solid 2px #967E76;
   width:100%;
   margin:.5em;
   border-radius: 10px;
   box-shadow: 3px 3px 3px #182747;
-  overflow: none;
+  overflow: hidden;
 }
 
 .borders2{
@@ -85,22 +90,31 @@ a:hover {
   align-items: center;
   padding: .5em;
   border: solid 2px #967E76;
+  /* border: solid 1px green; */
   width:100%;
   margin:.5em;
   border-radius: 10px;
   box-shadow: 3px 3px 3px #182747;
-  overflow: none;
+  overflow: hidden;
 }
 
 .authorPic{
-  width:200px;
-  height:200px;
+  width:150px;
+  height:150px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorPic:hover{
+  border: solid 2px #967E76;
+  overflow: hidden;
+  box-shadow: 3px 3px 3px #182747;
+  cursor: pointer;
 }
 
 
 .welcome{
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   padding: 1em;
   margin-bottom: 5px;
 }
@@ -109,7 +123,7 @@ a:hover {
   font-weight:bolder;
   font-size: 1.75rem;
   text-shadow: 1px 1px 1px #182747;
-  font-family:Poppins;
+  font-family:Silkscreen;
   margin-bottom:5px;
   margin-top: 5px;
   text-shadow:1px 1px 1px orange;

@@ -28,7 +28,7 @@ class Blogs extends React.Component{
                             </div>
 
                             <div className="bpHeaders">
-                                <image className="authImg" src={blog.authorImage}></image>
+                                <a href={`/blog/${blog._id}`}><image className="authImg" src={blog.authorImage} ></image></a>
                             </div>
                             
                             <div className="bpHeaders">

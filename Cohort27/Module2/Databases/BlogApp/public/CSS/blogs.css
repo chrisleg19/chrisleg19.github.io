@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
 
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
@@ -12,7 +12,7 @@ body {
   }
 
 h1 {
-  font-family: Poppins;
+  font-family: Silkscreen;
   margin:0;
   margin-bottom: .25em;
   padding: 1em;
@@ -20,7 +20,7 @@ h1 {
   text-shadow: 1px 1px 1px orange;
 }
 
-a {
+/* a {
   text-decoration: none;
 }
 
@@ -32,7 +32,7 @@ a:link, a:visited, a:active{
 
 a:hover {
   color: ghostwhite;
-}
+} */
 
 .blogsCont{
     display: flex;
@@ -64,6 +64,37 @@ a:hover {
     height: auto;
 }
 
+.bpHeaders a:link{
+  color: #182747;
+  text-shadow: 1px 1px 2px orange;
+  font-size: 1.25rem;
+}
+
+.bpHeaders a:visited{
+  color: #182747;
+  text-shadow: 1px 1px 2px orange;
+  font-size: 1.25rem;
+}
+
+.bpHeaders a:active{
+  color: #182747;
+  text-shadow: 1px 1px 2px orange;
+  font-size: 1.25rem;
+}
+
+.bpHeaders a{
+  color: #182747;
+  font-size: 1.25rem;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px orange;
+}
+
+.bpHeaders a:hover{
+  color: ghostwhite;
+}
+
+
+
 .bpHeaders h3{
     margin:0;
     padding: .5em;
@@ -72,7 +103,15 @@ a:hover {
 .authImg{
     height: 100px;
     width: 100px;
-    border-radius: 50%;  
+    border-radius: 50%;
+    object-fit: cover;  
+}
+
+.authImg:hover{
+  border: solid 2px #967E76;
+  overflow: hidden;
+  box-shadow: 3px 3px 3px #182747;
+  cursor: pointer;
 }
 
 .createNewDiv{

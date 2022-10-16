@@ -4,6 +4,7 @@ const Navbar = require("../components/Navbar")
 class BlogShow extends React.Component{
     render(){
         const {blog} = this.props
+        console.log(blog)
         return(
             <body>
 
@@ -14,18 +15,41 @@ class BlogShow extends React.Component{
                 <Navbar />
 
                 <h1>Enjoy your Read!</h1>
-                <a href={"/"}>Home</a>
-                <br/>
-                Title:<h3>{blog.title}</h3>
-                <br/>
-                Author:<h3>{blog.author}</h3>
-                <br/>
-                Likes:<h4>{blog.likes}</h4>
-                <br/>
-                Sponsored:<h4>{blog.sponsored}</h4>
-                <br/>
-                Created:<h5>{blog.timestamps}</h5>
+                <div className="infoCont">
+                <div className="info">
+                <h2>{blog.title}</h2>
+
+                <div className="writtenBy">
+                <h4>Written By:</h4><p>{blog.author}</p>
+                </div>
+
+                <div className="likes">
+                <h4>Likes:</h4><p>{blog.likes}</p>
+                </div>
+
+                <div className="sponsored">
+                {blog.sponsored === true ? <p><span>Sponsored:</span> Yes</p> : <p><span>Sponsored:</span> No</p>}
+                </div>
+
+                <h4 className="created">Created:</h4>
+
+                <a className="editBlog">Edit Blog</a>
+                <a className="deleteBlog">Delete Blog</a>
+
+                </div>
+                
+                <image className="profilePic" src={blog.authorImage}></image>
+
+
+                </div>
+
+                <div className="blogBody">
                 <p>{blog.body}</p>
+                </div>
+
+                
+
+
 
             </body>
 

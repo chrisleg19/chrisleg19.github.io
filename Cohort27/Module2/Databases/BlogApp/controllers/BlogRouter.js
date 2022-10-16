@@ -89,6 +89,19 @@ router.get("/:id", async(req, res)=>{
 
 
 
+//============= DELETE:
+
+router.delete("/:id", async(req,res)=>{
+    try{
+        const deletedBlog = await BlogModel.findByIdAndRemove(req.params.id)
+        console.log(deletedBlog);
+        res.send("Blog Deleted")
+    } catch(error){
+        console.log(error)
+        res.status(403).send("Cannot Delete")
+    }
+})
+
 
 // ============ PUT: Update by ID
 
@@ -104,18 +117,12 @@ router.put("/:id", async (req,res)=>{
     }
 })
 
-
-
-//============= DELETE:
-
-router.delete("/:id", async(req,res)=>{
+router.get("/:id/edit", async(req,res)=>{
     try{
-        const deletedBlog = await BlogModel.findByIdAndRemove(req.params.id)
-        console.log(deletedBlog);
-        res.send("Blog Deleted")
-    } catch(error){
+        res.render("Blogs/EditBlog")
+    }catch(error){
         console.log(error)
-        res.status(403).send("Cannot Delete")
+        res.status(403).send("Cannot Get EditBlog Form")
     }
 })
 
