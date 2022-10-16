@@ -34,6 +34,11 @@ router.get("/", async (req,res)=>{
 //Use try{} catch{} for errors
 router.post("/", async (req, res)=>{
     try{
+        if(req.body.sponsored==="on"){
+            req.body.sponsored = true;
+        } else{
+            req.body.sponsored = false;
+        }
         const newBlog = await BlogModel.create(req.body)
         console.log(newBlog)
         // res.send(newBlog) 
@@ -95,7 +100,8 @@ router.delete("/:id", async(req,res)=>{
     try{
         const deletedBlog = await BlogModel.findByIdAndRemove(req.params.id)
         console.log(deletedBlog);
-        res.send("Blog Deleted")
+        // res.send("Blog Deleted")
+        res.redirect("/")
     } catch(error){
         console.log(error)
         res.status(403).send("Cannot Delete")
@@ -105,26 +111,52 @@ router.delete("/:id", async(req,res)=>{
 
 // ============ PUT: Update by ID
 
+
+
+//remove the callback function below:
+
+
+
+
+router.get("/:id/edit", (req,res)=>{
+        const {id} = req.params
+        console.log("getting blog info for edit form")
+        BlogModel.findById(id,(error,foundBlog)=>{
+            if(error){
+                console.log(error)
+                res.status(403).send("id not found")
+            }
+            console.log("placing blog info on edit form")
+            res.render("Blogs/EditBlog", {blog: foundBlog})
+        })
+    
+})
+
+
 router.put("/:id", async (req,res)=>{
     try{
     //use {"returnDocument" : "after"} to see document after update (in Postman)
         //Note: default option is to show document before update (in Postman)
+
+    if(req.body.sponsored === "on"){
+        req.body.sponsored = true;
+    } else {
+        req.body.sponsored = false;
+    }
     const updatedBlog = await BlogModel.findByIdAndUpdate(req.params.id, req.body, {"returnDocument" : "after"})
-    res.send(updatedBlog)
+    // res.send(updatedBlog)
+
+
+    res.redirect(`/blog/${req.params.id}`)
+    
+
     } catch (error){
         console.log(error)
         res.status(403).send("Cannot put")
     }
 })
 
-router.get("/:id/edit", async(req,res)=>{
-    try{
-        res.render("Blogs/EditBlog")
-    }catch(error){
-        console.log(error)
-        res.status(403).send("Cannot Get EditBlog Form")
-    }
-})
+
 
 
 

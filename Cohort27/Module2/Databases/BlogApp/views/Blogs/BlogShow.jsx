@@ -4,7 +4,7 @@ const Navbar = require("../components/Navbar")
 class BlogShow extends React.Component{
     render(){
         const {blog} = this.props
-        console.log(blog)
+        // console.log(blog)
         return(
             <body>
 
@@ -33,8 +33,12 @@ class BlogShow extends React.Component{
 
                 <h4 className="created">Created:</h4>
 
-                <a className="editBlog">Edit Blog</a>
-                <a className="deleteBlog">Delete Blog</a>
+                <a href={`/blog/${blog._id}/edit`} className="editBlog">Edit Blog</a>
+
+                <form action={`/blog/${blog._id}?_method=DELETE`} method="POST">
+                <input type="submit" value="Delete" className="deleteBlog"/>
+                </form>
+
 
                 </div>
                 

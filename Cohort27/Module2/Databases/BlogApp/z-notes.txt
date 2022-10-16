@@ -116,3 +116,11 @@ Adding CSS hover effect:
 sessions to check if authors are logged in:
 
 example: {blog.user === session.user ? div with form  :  div with nothing}
+
+
+
+
+
+
+
+
