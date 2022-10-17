@@ -8,6 +8,18 @@ const BlogModel = require("../models/BlogSchema")
 const router = express.Router()
 
 
+//Add Privacy to this router or routes
+//checking to see if user is signed in, if true=>continue routes, if false=>redirect to ("/login")
+//created middleware function (coming from session in UserRouter.js)
+router.use((req, res, next)=>{
+    if (req.session.loggedIn){
+        next()
+    } else {
+        res.redirect("/user/login")
+    }
+})
+
+
 //========= GET: Get all Blogs 
 
 router.get("/", async (req,res)=>{
@@ -27,6 +39,18 @@ router.get("/", async (req,res)=>{
 
 //=========== POST: Create new Blog
 
+//render Create New Blog Form
+router.get("/new", async(req,res)=>{
+    try{
+        res.render("Blogs/NewBlog")
+    }catch(error){
+        console.log(error)
+        res.status(403).send("Cannot Get NewBlog Form")
+    }
+})
+
+//POST request for new Blog
+
 //======== Example with async await: =========
 
 //mark your function with async
@@ -39,6 +63,9 @@ router.post("/", async (req, res)=>{
         } else{
             req.body.sponsored = false;
         }
+        //set the author to the logged in user
+        req.body.author = req.session.username
+
         const newBlog = await BlogModel.create(req.body)
         console.log(newBlog)
         // res.send(newBlog) 
@@ -49,14 +76,6 @@ router.post("/", async (req, res)=>{
     }
 })
 
-router.get("/new", async(req,res)=>{
-    try{
-        res.render("Blogs/NewBlog")
-    }catch(error){
-        console.log(error)
-        res.status(403).send("Cannot Get NewBlog Form")
-    }
-})
 
 //======= Example with .then & .catch =========
 
@@ -85,7 +104,8 @@ router.get("/:id", async(req, res)=>{
     try{
         const blogInDb = await BlogModel.findById(req.params.id)
         // res.send(blog)
-        res.render("Blogs/BlogShow",{blog: blogInDb})
+        //loggedInUser: req.session.username (checking if logged in user is the blog author)
+        res.render("Blogs/BlogShow",{blog: blogInDb, loggedInUser: req.session.username})
     } catch (error){
         console.log(error)
         res.status(403).send("Cannot get")
@@ -111,27 +131,32 @@ router.delete("/:id", async(req,res)=>{
 
 // ============ PUT: Update by ID
 
+//Example with async await:  
 
+router.get('/:id/edit', async (req, res) => {
+    try {
+      const foundBlog = await BlogModel.findById(req.params.id);
+      res.render('Blogs/EditBlog', { blog: foundBlog });
+    } catch (error) {
+      console.log(error);
+      res.status(403).send('cannot get edit page')
+    }
+  })
 
-//remove the callback function below:
+//Example without async await
 
-
-
-
-router.get("/:id/edit", (req,res)=>{
-        const {id} = req.params
-        console.log("getting blog info for edit form")
-        BlogModel.findById(id,(error,foundBlog)=>{
-            if(error){
-                console.log(error)
-                res.status(403).send("id not found")
-            }
-            console.log("placing blog info on edit form")
-            res.render("Blogs/EditBlog", {blog: foundBlog})
-        })
-    
-})
-
+// router.get("/:id/edit", (req,res)=>{
+//         const {id} = req.params
+//         console.log("getting blog info for edit form")
+//         BlogModel.findById(id,(error,foundBlog)=>{
+//             if(error){
+//                 console.log(error)
+//                 res.status(403).send("id not found")
+//             }
+//             console.log("placing blog info on edit form")
+//             res.render("Blogs/EditBlog", {blog: foundBlog})
+//         })
+// })
 
 router.put("/:id", async (req,res)=>{
     try{

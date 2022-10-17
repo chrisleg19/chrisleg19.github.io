@@ -16,10 +16,10 @@ class NewBlog extends React.Component{
                 <div className="formCont">
 
                 <form className="form" action="/blog" method="POST">
-                    <h5>Title:</h5> <input className="titleInput" type="text" name="title"></input>
-                    <h5>Author:</h5> <input className="authorInput" type="text" name="author"></input>
+                    <h5>Title:</h5> <input className="titleInput" type="text" name="title" required></input>
+                    {/* <h5>Author:</h5> <input className="authorInput" type="text" name="author" required></input> */}
                     <h5>Profile Pic:</h5> <input className="profilePicInput" type="text" name="authorImage"></input>
-                    <h5>Body:</h5> <textarea name="body" rows="20" cols="50" autofocus wrap="hard" spellcheck="true"></textarea>
+                    <h5>Body:</h5> <textarea name="body" rows="20" cols="50" autofocus wrap="hard" spellcheck="true" required></textarea>
                     <div className="sponsoredBx">
                     <h5>Sponsored:</h5> <input type="checkbox" name="sponsored"></input>
                     </div>

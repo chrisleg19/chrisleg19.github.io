@@ -12,8 +12,13 @@ class Navbar extends React.Component{
                 <a href="/">Home</a>
                 <a href="/blog">Blogs</a>
                 <a href="/user">Authors</a>
-                <a href="/login">Sign Up / Log In</a>
+                <a href="/user/signup">Sign Up / Log In</a>
+                
+                <a href="/user/signout">Log Out</a>
+                
 
+                
+                
             </nav>
             </>
 

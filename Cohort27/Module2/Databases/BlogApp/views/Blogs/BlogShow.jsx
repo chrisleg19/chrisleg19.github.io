@@ -3,8 +3,14 @@ const Navbar = require("../components/Navbar")
 
 class BlogShow extends React.Component{
     render(){
-        const {blog} = this.props
+        const {blog, loggedInUser} = this.props
+        console.log(loggedInUser)
         // console.log(blog)
+        console.log(typeof(created_at));
+        const date = new Date(blog.created_at)
+        console.log("what i'm looking for",date.toDateString())
+
+        console.log(blog.created_at)
         return(
             <body>
 
@@ -31,14 +37,18 @@ class BlogShow extends React.Component{
                 {blog.sponsored === true ? <p><span>Sponsored:</span> Yes</p> : <p><span>Sponsored:</span> No</p>}
                 </div>
 
-                <h4 className="created">Created:</h4>
+                <div className="createdCont">
+                <h4 className="created">Created:</h4> <p>{date.toDateString()}</p>
+                </div>
+                {blog.author === loggedInUser ? (                   
+                <a href={`/blog/${blog._id}/edit`} className="editBlog">Edit Blog</a> ) : null
+                }
 
-                <a href={`/blog/${blog._id}/edit`} className="editBlog">Edit Blog</a>
-
+                {blog.author===loggedInUser ? (
                 <form action={`/blog/${blog._id}?_method=DELETE`} method="POST">
                 <input type="submit" value="Delete" className="deleteBlog"/>
-                </form>
-
+                </form> ) : null
+                }
 
                 </div>
                 

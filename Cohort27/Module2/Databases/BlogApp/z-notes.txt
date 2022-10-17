@@ -119,8 +119,70 @@ example: {blog.user === session.user ? div with form  :  div with nothing}
 
 
 
+================================================
+
+JWT Sessions 
+https://ps-rtt-sei.herokuapp.com/mod-2/week-9/day-3/slides/ 
+
+Authentication
+
+This is typically done by comparing a password a user has entered with one they provided at signup. The only wrinkle is for security purposes we will want to encrypt the password using something called bCrypt.
+
+Authorization
+
+There are two main ways to achieve this:
+
+Session Based Auth: This is a better choice if all resources the logged in user needs to access is on the same backend server. In this scenario a user logs in and a cookie is created for the browser session (until they close the browser or logout). This cookie will identify a tiny packet of data on our server we can then access with anything we'd like to store in it like the users login status or user information.
+The data is on the server, the cookie allows us to know which data belongs to which logged in user.
 
 
 
+1. Install in terminal:
+
+npm install bcryptjs express-session connect-mongo
+
+In package.json:
+
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "express-session": "^1.17.3",
+
+bcryptjs: a pre-compiled version of bcrypt which we will use to encrypt passwords
+
+    https://www.npmjs.com/package/bcryptjs 
+
+express-session: middleware for creating session cookies
+
+    https://www.npmjs.com/package/express-session 
+
+connect-mongo: plugin that will allow express session to save session data in our mongo database
 
 
+=======================================================================================================
+
+To check if user is logged in and protect specific routes, pass the created middleware in the specific route:
+
+example:
+
+// DELETE route:
+
+router.delete("/:id", [insert middleware here] ,async(req,res)=>{
+    try{
+        const deletedBlog = await BlogModel.findByIdAndRemove(req.params.id)
+        console.log(deletedBlog);
+        // res.send("Blog Deleted")
+        res.redirect("/")
+    } catch(error){
+        console.log(error)
+        res.status(403).send("Cannot Delete")
+    }
+})
+
+
+============================================================================
+
+In BlogShow.jsx, using a ternary operator to check if the blog author is the same as the logged in user.  If true, show the edit button, if false show nothing.
+
+{
+blog.author === loggedInUser ? (<a href={`/blog/${blog._id}/edit`} className="editBlog">Edit Blog</a>) : null
+}

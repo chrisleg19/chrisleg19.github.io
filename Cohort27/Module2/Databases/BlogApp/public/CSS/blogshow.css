@@ -53,7 +53,7 @@ line-height: 2em;
  
 }
 .writtenBy h4{
-  margin-right: 1em;
+  margin-right: .5em;
 }
 .writtenBy p{
   margin:0;
@@ -69,7 +69,7 @@ line-height: 2em;
 }
 
 .likes h4{
-  margin-right: 1em;
+  margin-right: .5em;
 }
 
 .sponsored p{
@@ -79,6 +79,20 @@ line-height: 2em;
 .sponsored span{
   font-weight: bold;
 }
+
+.createdCont{
+  display: flex;
+  align-items: baseline;
+}
+
+.createdCont h4{
+  margin-right: .5em;
+}
+
+.createdCont p{
+  margin:0;
+}
+
 
 .profilePic{
   height: 150px;

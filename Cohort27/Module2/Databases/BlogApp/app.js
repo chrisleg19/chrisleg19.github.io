@@ -2,6 +2,8 @@ const express = require("express")
 const mongoose = require ("mongoose")
 const morgan = require("morgan")
 const methodOverride = require('method-override')
+const session = require("express-session")
+const MongoStore = require("connect-mongo")
 require("dotenv").config()
 
 
@@ -16,10 +18,18 @@ app.use(express.urlencoded({extended:false}))
 app.use(methodOverride('_method'))
 //replaces urlencoded (This middleware is available in Express v4.16.0 onwards.)
 app.use(express.json()) 
-app.use((req,res, next)=>{
-    console.log("I run for all routes")
-    next()
-})
+//express-session (creates a new session object in the log in route):
+app.use(session({
+    //SECRET is in .env file
+    secret: process.env.SECRET,
+    store: MongoStore.create({mongoUrl: process.env.MONGO_URI}),
+    resave: false, 
+    saveUninitialized: true
+}))
+// app.use((req,res, next)=>{
+//     console.log("I run for all routes")
+//     next()
+// })
 
 //set up view engine
 app.set("view engine", "jsx")
