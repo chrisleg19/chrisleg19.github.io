@@ -4,11 +4,11 @@ const Navbar = require("../components/Navbar")
 class BlogShow extends React.Component{
     render(){
         const {blog, loggedInUser} = this.props
-        console.log(loggedInUser)
+        // console.log(loggedInUser)
         // console.log(blog)
-        console.log(typeof(created_at));
+        // console.log(typeof(created_at));
         const date = new Date(blog.created_at)
-        console.log("what i'm looking for",date.toDateString())
+        // console.log("what i'm looking for",date.toDateString())
 
         console.log(blog.created_at)
         return(
@@ -18,7 +18,7 @@ class BlogShow extends React.Component{
                     <link rel="stylesheet" href="/CSS/blogshow.css"/> 
                 </head>
 
-                <Navbar />
+                <Navbar loggedInUser={loggedInUser}/>
 
                 <h1>Enjoy your Read!</h1>
                 <div className="infoCont">

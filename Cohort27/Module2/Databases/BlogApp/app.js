@@ -8,7 +8,7 @@ require("dotenv").config()
 
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 //middleware
 //setting up static folder for resources
@@ -47,7 +47,7 @@ app.use("/user", require("./controllers/UserRouter"))
 //BELOW NOT NEEDED with app.use("/blog, require("./controllers/BlogRouter"))
 //Can be used a homepage
 app.get("/", (req, res)=>{
-    // 
+     
     res.render("pages/homepage")
 })
 

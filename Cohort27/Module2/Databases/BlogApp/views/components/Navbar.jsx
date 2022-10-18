@@ -2,20 +2,26 @@ const React = require("react")
 
 class Navbar extends React.Component{
     render(){
+        const {loggedInUser} = this.props
         return(
             <>
             <head>
             <link rel="stylesheet" href="/CSS/navbar.css"/>
             </head>
 
-            <nav className="navBar">
+            <nav >
+                <div className="navBar">
                 <a href="/">Home</a>
                 <a href="/blog">Blogs</a>
                 <a href="/user">Authors</a>
                 <a href="/user/signup">Sign Up / Log In</a>
-                
-                <a href="/user/signout">Log Out</a>
-                
+
+                {loggedInUser && <a href="/user/signout">Log Out</a>}
+                </div>
+
+                <div className = "welcome">
+                {loggedInUser && <p>Welcome back {loggedInUser}</p>}
+                </div>
 
                 
                 

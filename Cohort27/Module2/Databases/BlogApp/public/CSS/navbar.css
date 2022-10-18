@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 .navBar{
     background-color: #562B08;
     color: orange;
@@ -22,4 +28,11 @@ a {
   
   a:hover {
     color: ghostwhite;
+  }
+
+  .welcome{
+    font-family: Silkscreen;
+    display: flex;
+    justify-content: center;
+    text-shadow: 1px 1px 1px orange;
   }

@@ -20,7 +20,7 @@ class HomePage extends React.Component{
                 <image className="mario" src="https://images.unsplash.com/photo-1593789382576-54f489574d26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFyaW98ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"/>
                 </div>
 
-                    <p className="welcome">
+                    <p className="welcomeHomePage">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur nisi doloremque odit nesciunt eligendi, reiciendis ab fugit delectus quaerat nam voluptas impedit dolore quasi quidem, explicabo autem vel. Id asperiores, voluptas quidem laudantium architecto a voluptatum quibusdam dolore, dolor corrupti illo provident sapiente numquam hic assumenda omnis aperiam itaque culpa iure quis perferendis minima. Dolorem optio modi sint, dicta atque maxime sapiente saepe ipsam. Aspernatur dolores error tenetur! Incidunt omnis quisquam harum corrupti earum ab assumenda saepe obcaecati veniam iusto, debitis aliquam nostrum sed vel! Omnis, iste officia. Dolore dignissimos alias nobis odit sit quisquam in nemo voluptatem omnis laudantium.</p>
                 
                 <div className="homeContainer">

@@ -101,6 +101,9 @@ router.post("/", async (req, res)=>{
 
 //because this is part of the blogs router, its already prefixed with router.get("/blogs/:id", (req,res)=>{})...but I don't have to input
 router.get("/:id", async(req, res)=>{
+    //console log the session object to see the properties available for destructuring. 
+        //Note: we set these properties in the UserRouter.js (req.session.username = user.username AND req.session.loggedIn = true)
+    console.log("session object",req.session)
     try{
         const blogInDb = await BlogModel.findById(req.params.id)
         // res.send(blog)
