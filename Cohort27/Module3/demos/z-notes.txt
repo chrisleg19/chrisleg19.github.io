@@ -1,0 +1,17 @@
+
+In .html document, scripts are used for react, react-dom, and babel.
+
+For the script react-dom:
+
+This renders the react components to the client browser (pc)
+
+    note: for mobile, you will need react-native.
+
+
+
+
+FLOW of components and rendering: 
+
+1. Everything renders to the App component.  
+
+2. The App component is rendered to the root div in the html.
