@@ -1,3 +1,5 @@
+Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-10/day-1/slides/ 
+
 
 In .html document, scripts are used for react, react-dom, and babel.
 
@@ -9,9 +11,21 @@ This renders the react components to the client browser (pc)
 
 
 
-
 FLOW of components and rendering: 
 
 1. Everything renders to the App component.  
 
 2. The App component is rendered to the root div in the html.
+
+
+State and Props
+-Like most applications, a React component may have state (data/information).
+-State can only be changed by the component that "owns" that state.
+-When a component's state is changed, that entire component is re-rendered, including all of its child components.
+- A "stateful" component passes any state needed by child components as props.
+- Props are accessible as key/value pairs on a props object. This props object is passed to the component every time it is rendered.
+- Props in a component are always read-only.
+
+
+
+Most of the time, state is kept in the parent (top) component. 
