@@ -49,8 +49,10 @@
   }
   
   .X, .O {
+   
     flex-basis: 45%;
     text-align: center;
+   
   }
   
   .X {

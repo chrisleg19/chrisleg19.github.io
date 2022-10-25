@@ -1,0 +1,21 @@
+Run Create React App 
+(in terminal and in the folder you want to save the app)
+    npx create-react-app "projectName"
+
+run in terminal: npm start 
+to run "live server"
+
+importing modules need to be in this format:
+    import Form from "./components/Form"
+
+importing files (like css) can be imported in this format:
+    import './App.css';
+
+
+
+
+            <h1>{movie.Title}</h1>
+            <h3>{movie.Genre}</h3>
+            <img src={movie.Poster} alt={movie.Title} />
+            <h3><br/>{movie.Released}</h3>
+            <h4>{movie.Plot}</h4>
