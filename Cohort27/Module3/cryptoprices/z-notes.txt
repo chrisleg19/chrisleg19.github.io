@@ -1,0 +1,61 @@
+Slides: https://perscholas.instructure.com/courses/1123/modules/items/511745 
+
+Creating a React Router (implementing routing in the front end)
+
+1. npx create-react-app "name of app directory"
+2. npm install react-router-dom
+3. npm start
+4. import {BrowserRouter as Router} from "react-router-dom"  in the index.js
+5. in the index.js wrap the app in the <Router></Router> tags
+        <Router>
+        <App />
+        </Router>
+6. create your pages.js (export)
+7. in you App.js, import the pages
+8. also import {Route, Routes} from "react-router-dom"
+9. in App.js, wrap your Route in the Routes tags.  Also give it 2 properties: path & element
+        <Routes>
+            <Route path="/" element={<Main/>}/>
+            <Route path="/currencies" element={<Currencies/>}/>
+            <Route path="/price" element={<Price/>}/>
+        </Routes>
+
+10. create your component (Nav)
+11. import import {Link} from "react-router-dom" in your Nav component
+12.  use the <Link><Link/> tags with "to" properties. This will navigate between each page or path
+         <div>
+            <Link to="/">
+                <div>CRYPTO PRICES</div>
+            </Link>
+
+            <Link to="/currencies">
+                <div>CURRENCIES</div>
+            </Link>
+        </div>   
+
+13. creating params
+        insert ":symbol" in <Route></Route> in App.js  ex:
+        <Route path="/price/:symbol" element={<Price/>}/>
+
+
+14. next steps:
+
+The Price Component
+Before we create this component take a moment to get your FREE Api key from coinapi.io. Keep in mind you can only make 100 requests per day with your free apiKey.
+
+Once you have your api key here is what we will do:
+
+-store the apikey and currency symbol in different variables
+
+-use the useEffect hook to make an api call
+
+-interpolate the apikey and symbol in the fetch URL
+    NOTE:  import {useParams} from "react-router-dom" in Price.js
+        - Returns an object of key/value pairs of the dynamic params from the current URL that were matched by the route path.
+
+-save the resulting data in state and render it
+    NOTE: import { useState } from "react";
+    
+-loaded and loading function for rendering the data if exists
+
+
