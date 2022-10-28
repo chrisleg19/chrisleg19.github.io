@@ -16,7 +16,7 @@ const Price = ()=>{
     //return an object with the matching URL params
     const params = useParams()
 
-    //// console.log(params.symbol)
+    // console.log(params.symbol)
 
     //variable for the url
     const url = `http://rest-sandbox.coinapi.io/v1/exchangerate/${params.symbol}/USD?apikey=${apiKey}`

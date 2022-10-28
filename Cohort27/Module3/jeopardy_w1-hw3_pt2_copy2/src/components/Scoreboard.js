@@ -1,11 +1,14 @@
 import {useParams} from "react-router-dom"
 import {useState, useEffect} from "react"
 
-const Scoreboard = () =>{
+const Scoreboard = (props) =>{
+    const {question} = props
+    
+
     return(
         <div>
-            <h2>Score: </h2>
-            <button>Increase</button>
+            <h2>Score:  </h2>
+            <button >Increase</button>
             <button>Decrease</button>
             <button>Reset</button>
         </div>
