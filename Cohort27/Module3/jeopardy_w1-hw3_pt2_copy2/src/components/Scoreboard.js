@@ -1,16 +1,31 @@
-import {useParams} from "react-router-dom"
 import {useState, useEffect} from "react"
 
 const Scoreboard = (props) =>{
-    const {question} = props
-    
+
+const startScore = 0
+const [score, setScore] = useState(startScore)
+const {question} = props
+
+
+
+const addPoints = () =>{
+    setScore(score + question[0].value)
+}
+
+const subtractPoints = () =>{
+    setScore(score - question[0].value)
+}
+
+const resetPoints = () =>{
+    setScore(startScore)
+}
 
     return(
         <div>
-            <h2>Score:  </h2>
-            <button >Increase</button>
-            <button>Decrease</button>
-            <button>Reset</button>
+            <h2>Score: {score} </h2>
+            <button onClick={addPoints}>Increase</button>
+            <button onClick={subtractPoints}>Decrease</button>
+            <button onClick={resetPoints}>Reset</button>
         </div>
     )
 }
