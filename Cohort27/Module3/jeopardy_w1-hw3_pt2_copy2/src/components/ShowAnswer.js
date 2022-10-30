@@ -23,9 +23,9 @@ const ShowAnswer = (props) =>{
     }
 
     return(
-        <div>
-            <button onClick={showAnswerBtn}>Answer</button>
-            {answer && <h1>Answer: {question[0].answer}</h1>}
+        <div className="answerDiv">
+            <button onClick={showAnswerBtn} className="answerBtn">Answer</button>
+            {answer && <h2 className="answer">Answer: {question[0].answer}</h2>}
         </div>
     )
 }

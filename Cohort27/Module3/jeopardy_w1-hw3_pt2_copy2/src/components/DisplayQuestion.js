@@ -73,13 +73,13 @@ const DisplayQuestion = (props) =>{
     
     return(
         <div>
-            <button onClick={questionBtn}>Random Trivia Question</button>
-            <h2>Question: {question[0].question}</h2>
+            <button className="random" onClick={questionBtn}>Random Trivia Question</button>
+            <div className="questionBox">
 
-            
-            <h3>Category: {question[0].category.title}</h3>
-            <h3>Points: {question[0].value}</h3>
-            
+            <h2><span className="highlight">Question:</span> {question[0].question}</h2>
+            <h2><span className="highlight">Category:</span> {question[0].category.title}</h2>
+            <h2><span className="highlight">Points:</span> {question[0].value}</h2>
+            </div>
             
             
            

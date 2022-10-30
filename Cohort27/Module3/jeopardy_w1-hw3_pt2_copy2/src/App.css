@@ -1,38 +1,137 @@
+
+
 .App {
   text-align: center;
+  overflow: hidden;
+  position: relative;
+ 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1{
+  color: ghostwhite;
+  font-family:fantasy;
+  font-size: 75px;
+  padding:none;
+  margin:0;
+  letter-spacing: 5px;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.scoreBoard{
+  color:white;
+}
+
+.score{
+  font-size: 30px;
+  margin-top: 5px;
+}
+
+/* .scoreBoard button{
+  background-color: ghostwhite;
+  font-family: fantasy;
+  font-size: 15px;
+  margin:.5em;
+}
+
+.scoreBoard button:hover{
+  cursor: pointer;
+} */
+
+.add{
+  background-color: green;
+  font-family: fantasy;
+  font-size: 15px;
+  margin:.5em;
+  color: ghostwhite;
+  font-size: 20px;
+  font-weight: bold;
+}
+.add:hover{
+cursor: pointer
+}
+
+.subtract{
+  background-color: red;
+  font-family: fantasy;
+  font-size: 15px;
+  margin:.5em;
+  color: ghostwhite;
+  font-size: 20px;
+  font-weight: bold; 
+}
+
+.subtract:hover{
+  cursor: pointer
   }
+
+.reset{
+  background-color: ghostwhite;
+  font-family: fantasy;
+  font-size: 15px;
+  margin:.5em;
+  border:solid 2px blue;
+  color: blue;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.reset:hover{
+  cursor: pointer
+  }
+
+
+
+.random{
+  background-color: rgb(237, 237, 241);
+  font-family: fantasy;
+  color: blue;
+  font-size: 25px;
+  padding: 10px;
+  margin-top: 1em;  
+  border: solid 1px blue;
+}
+
+.random:hover{
+  box-shadow: .5px .5px .5px 1px blue;
+  cursor: pointer;
+}
+
+.questionBox{
+  font-family: fantasy;
+  letter-spacing: 1.5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: ghostwhite;  
+  padding: 10px;
+  margin-top: 1em;
+  /* border-radius: 20px; */
+  box-shadow: 2px 1px 2px    blue;
+
 }
 
-.App-link {
-  color: #61dafb;
+.highlight{
+  color:rgb(204, 15, 15);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.answerDiv{
+  margin-top: 1em;
+  
+}
+
+.answerBtn{
+  background-color: ghostwhite;
+  font-family: fantasy;
+  color: blue;
+  font-size: 15px;
+  padding: 5px;
+  margin-top: 1em;  
+  border: solid 1px blue;
+}
+
+.answerBtn:hover{
+  box-shadow: .5px .5px .5px 1px blue;
+  cursor: pointer;
+}
+
+.answer{
+  color: ghostwhite
 }

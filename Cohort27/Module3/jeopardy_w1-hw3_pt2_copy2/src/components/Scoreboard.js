@@ -21,11 +21,11 @@ const resetPoints = () =>{
 }
 
     return(
-        <div>
-            <h2>Score: {score} </h2>
-            <button onClick={addPoints}>Increase</button>
-            <button onClick={subtractPoints}>Decrease</button>
-            <button onClick={resetPoints}>Reset</button>
+        <div className="scoreBoard">
+            <h2 className="score">Score: {score} </h2>
+            <button onClick={addPoints} className="add">+</button>
+            <button onClick={subtractPoints} className="subtract">-</button><br/>
+            <button onClick={resetPoints} className="reset">Reset</button>
         </div>
     )
 }
