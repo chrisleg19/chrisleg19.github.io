@@ -8,6 +8,8 @@
 
 //note: factorial of zero is 1
 
+//problem - Give an integer "n", find the factorial of that integer
+
 function factorial(n){
     //factorial will always start at 1, so initialize a variable with value 1
     let ans = 1

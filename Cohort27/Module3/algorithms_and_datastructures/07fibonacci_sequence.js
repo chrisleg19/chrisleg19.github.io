@@ -4,6 +4,8 @@
 
 //The first two numbers in the sequence are always 0 and 1
 
+//Problem - Give a number "n", find the first "n" elements of the Fibonacci sequence
+
 
 //start by initializing a variable with an array [0,1] (since the first 2 values of fib are 0 and 1)
 //in the for loop, start with i = 2 (because index 1 is 0 and index 2 is 1)
